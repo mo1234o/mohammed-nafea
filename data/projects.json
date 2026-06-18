@@ -1,0 +1,38 @@
+[
+    {
+        "id": "proj_1",
+        "title": "Logo Animations",
+        "desc": "10+ professional logo animations across multiple industries: automotive, pets, entrepreneurship, ERP and technology.",
+        "tag": "Logo Animation",
+        "thumb": ""
+    },
+    {
+        "id": "proj_2",
+        "title": "Qissa Coffee",
+        "desc": "Complete explainer video blending coffee, chess and literature — from storyboard to animation and sound design.",
+        "tag": "Explainer Video",
+        "thumb": ""
+    },
+    {
+        "id": "proj_3",
+        "title": "Book My Pet",
+        "desc": "Short video highlighting features of pet services booking platform with smooth and engaging visuals.",
+        "tag": "Explainer Video",
+        "thumb": "",
+        "youtube": "https:\/\/www.youtube.com\/watch?v=0Rk43K_JYgI"
+    },
+    {
+        "id": "proj_4",
+        "title": "Mobic Host",
+        "desc": "Full animation showcasing hosting solutions in Sudanese tech market with high visual clarity.",
+        "tag": "Tech Animation",
+        "thumb": ""
+    },
+    {
+        "id": "proj_5",
+        "title": "Talent Hub",
+        "desc": "Motion graphics for emerging platform offering professional services to tech talents in modern style.",
+        "tag": "Startup Promo",
+        "thumb": ""
+    }
+]

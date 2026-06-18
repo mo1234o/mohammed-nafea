@@ -1,0 +1,15 @@
+# Basic .htaccess for maximum compatibility
+# Set default charset
+AddDefaultCharset UTF-8
+
+# Set proper MIME types
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+    AddType image/svg+xml .svg
+    AddType application/json .json
+</IfModule>
+
+# URL rewrite (optional - remove if not needed)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+</IfModule>

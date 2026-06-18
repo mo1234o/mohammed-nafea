@@ -1,0 +1,9 @@
+{
+  "hero": { "visible": true, "order": 1 },
+  "about": { "visible": true, "order": 2 },
+  "skills": { "visible": true, "order": 3 },
+  "experience": { "visible": true, "order": 4 },
+  "projects": { "visible": true, "order": 5 },
+  "certs": { "visible": true, "order": 6 },
+  "contact": { "visible": true, "order": 7 }
+}

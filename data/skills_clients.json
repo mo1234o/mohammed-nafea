@@ -1,0 +1,24 @@
+{
+    "adobe_creative_suite": {
+        "title": "Adobe Creative Suite",
+        "background": "linear-gradient(180deg, #0f172a 0%, #1f2937 100%)",
+        "items": [
+            {"program": "After Effects", "image": "after-effects.png", "color": "#9999FF"},
+            {"program": "Premiere Pro", "image": "premiere-pro.png", "color": "#9999FF"},
+            {"program": "Illustrator", "image": "illustrator.png", "color": "#FF9A00"},
+            {"program": "Photoshop", "image": "photoshop.png", "color": "#31A8FF"},
+            {"program": "Character Animator", "image": "character-animator.png", "color": "#9999FF"},
+            {"program": "Audition", "image": "audition.png", "color": "#9999FF"}
+        ]
+    },
+    "trusted_clients": {
+        "title": "Trusted Clients",
+        "background": "linear-gradient(180deg, #111827 0%, #0f172a 100%)",
+        "items": [
+            {"name": "Client 1", "logo": "client1.png"},
+            {"name": "Client 2", "logo": "client2.png"},
+            {"name": "Client 3", "logo": "client3.png"},
+            {"name": "Client 4", "logo": "client4.png"}
+        ]
+    }
+}

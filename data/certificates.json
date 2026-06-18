@@ -1,0 +1,56 @@
+[
+    {
+        "id": "cert_1",
+        "title": "NASA Space Apps Challenge 2025",
+        "issuer": "NASA International Space Apps",
+        "period": "2025",
+        "desc": "Participated in NASA International Space Apps Challenge — Galactic Local Track with 2D animation guide project.",
+        "image": "",
+        "icon": "fas fa-rocket"
+    },
+    {
+        "id": "cert_2",
+        "title": "DEPI Round 3 – Media Production Influencer Track",
+        "issuer": "MCIT – Ministry of Communications",
+        "period": "06/2025 – 12/2025",
+        "desc": "Advanced media production and influencer marketing certification.",
+        "image": "",
+        "icon": "fas fa-video"
+    },
+    {
+        "id": "cert_3",
+        "title": "DEPI Round 1 – Digital Arts Track",
+        "issuer": "YAT Learning Centers",
+        "period": "August 2025",
+        "desc": "Certificate of Achievement in Digital Arts.",
+        "image": "",
+        "icon": "fas fa-palette"
+    },
+    {
+        "id": "cert_4",
+        "title": "DEPI – Adobe Motion Graphics Designer",
+        "issuer": "MCIT – Ministry of Communications",
+        "period": "05/2024 – 11/2024",
+        "desc": "6 months intensive program on Adobe Motion Graphics.",
+        "image": "",
+        "icon": "fas fa-certificate"
+    },
+    {
+        "id": "cert_5",
+        "title": "Outstanding Leadership & Exceptional Contributions",
+        "issuer": "Digital Egypt Pioneers Initiative (DEPI)",
+        "period": "05/2024 – 11/2024",
+        "desc": "Recognition for outstanding performance and leadership.",
+        "image": "",
+        "icon": "fas fa-award"
+    },
+    {
+        "id": "cert_6",
+        "title": "Adobe Illustrator Mega Course",
+        "issuer": "Udemy (18.5 hours)",
+        "period": "01/2023 – 03/2023",
+        "desc": "Beginner to Advanced Adobe Illustrator certification.",
+        "image": "",
+        "icon": "fas fa-graduation-cap"
+    }
+]

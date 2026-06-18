@@ -1,0 +1,78 @@
+DEPLOYMENT INSTRUCTIONS - Mohammed Nafea Portfolio
+================================================
+
+HOSTING DETAILS:
+- Domain: mohammed-nafea.wuaze.com
+- FTP Server: ftp.mohammed-nafea.wuaze.com
+- Username: if0_41629160
+- Password: d6ML9uvczGebArH
+- Directory: htdocs
+
+FILES TO UPLOAD:
+================
+
+1. Main Files:
+   - index.php (main portfolio page)
+   - .htaccess (server configuration)
+
+2. Data Directory:
+   - data/content.json
+   - data/projects.json
+   - data/theme.json
+   - data/sections.json
+
+3. Uploads Directory:
+   - uploads/ (create empty directory)
+
+4. Dashboard Directory:
+   - dashboard/index.php
+   - dashboard/login.php
+   - dashboard/logout.php
+   - dashboard/admin_config.php
+   - dashboard/projects.php
+   - dashboard/theme.php
+   - dashboard/sections.php
+
+UPLOAD STEPS:
+============
+
+1. Connect to FTP:
+   Host: ftp.mohammed-nafea.wuaze.com
+   Username: if0_41629160
+   Password: d6ML9uvczGebArH
+   Port: 21
+
+2. Navigate to: htdocs/
+
+3. Upload all files maintaining directory structure
+
+4. Set permissions:
+   - Directories: 755
+   - Files: 644
+   - uploads/: 755 (writable)
+
+5. Test the site:
+   - Main site: http://mohammed-nafea.wuaze.com
+   - Dashboard: http://mohammed-nafea.wuaze.com/dashboard
+
+FEATURES:
+==========
+- Fully responsive mobile design
+- Anti-copy protection
+- Custom cursor effects (desktop only)
+- Live content management via dashboard
+- Project management with image upload
+- Theme customization
+- Section ordering and visibility
+
+ADMIN ACCESS:
+==============
+- Email: mohammednafea700@gmail.com
+- Password: Nafea#2026$Studio!
+- URL: http://mohammed-nafea.wuaze.com/dashboard/login.php
+
+SUPPORT:
+========
+All files are optimized for production hosting.
+No database required - uses JSON files.
+Mobile-optimized with no scrollbar on mobile devices.

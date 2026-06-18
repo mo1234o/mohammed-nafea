@@ -1,0 +1,35 @@
+# Vendor directory
+vendor/
+
+# Uploads directory
+uploads/
+
+# Contact submissions
+contact_submissions.json
+
+# Test files
+test*.php
+test*.html
+debug*.php
+error-check.php
+
+# Backup files
+*_backup.php
+*.zip
+
+# Config files with sensitive data
+mailer_config.php
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Composer
+composer.lock
