@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mohammed Nafea | Motion Graphics Designer</title>
+  <meta name="description" content="Mohammed Nafea - Professional Motion Graphics Designer specializing in 2D animation, video editing, and visual storytelling in the MENA region.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%2300C2C7'/%3E%3Cstop offset='100%25' stop-color='%23D4AF37'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%230A1D37'/%3E%3Crect x='4' y='4' width='56' height='56' rx='14' fill='url(%23g)' opacity='0.22'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='18' font-weight='800' fill='%23FFFFFF'%3ENafe%D8%B9%3C/text%3E%3C/svg%3E" />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <!-- GSAP Animation Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Cairo:wght@400;700&family=Cinzel+Decorative:wght@700;900&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* ── THEME COLORS - 4 Colors Only ── */
+    :root {
+      --dark: #0A1D37;
+      --teal: #00C2C7;
+      --white: #FFFFFF;
+      --gold: #D4AF37;
+      /* Derived colors */
+      --dark2: #071428;
+      --teal-dim: rgba(0,194,199,0.15);
+      --gold-dim: rgba(212,175,55,0.12);
+      --gold-light: #f0d060;
+      /* Accent gradient */
+      --accent-1: var(--teal);
+      --accent-2: var(--gold);
+      --accent-gradient: linear-gradient(90deg, var(--accent-1) 0%, var(--accent-2) 100%);
+      --accent-gradient-135: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 100%);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    
+    /* ── LOADER ── */
+    #loader {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(135deg, var(--dark), var(--dark2));
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #loader.hide { opacity: 0; visibility: hidden; }
+    .loader-ring {
+      width: 60px; height: 60px;
+      border: 3px solid rgba(255,255,255,0.1);
+      border-top-color: var(--teal);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    
+    /* ── CURSOR ── */
+    #cursor {
+      position: fixed;
+      width: 14px; height: 14px;
+      background: var(--teal);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+    }
+    #cursorTrail {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1px solid var(--teal);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9997;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease;
+    }
+    
+    /* ── NAVIGATION ── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(10,29,55,0.85);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .mobile-menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .mobile-menu-toggle span {
+      width: 25px; height: 2px;
+      background: var(--white);
+      transition: 0.3s;
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 70px; left: 0; right: 0;
+        background: rgba(10,29,55,0.98);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+      }
+      .nav-links.active { transform: translateY(0); }
+      .mobile-menu-toggle { display: flex; }
+    }
+    
+    /* ── HERO SECTION ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-content {
+      text-align: center;
+      max-width: 800px;
+      z-index: 2;
+    }
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: 1.3rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      background: var(--accent-gradient);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .hero-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,194,199,0.3);
+    }
+    
+    /* ── SECTION STYLES ── */
+    section {
+      padding: 6rem 2rem;
+      position: relative;
+    }
+    .section-label {
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+    .section-title span {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-divider {
+      width: 80px;
+      height: 3px;
+      background: var(--accent-gradient);
+      margin: 0 auto 3rem;
+      border-radius: 2px;
+    }
+    
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .project-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--teal);
+    }
+    .project-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: var(--dark2);
+    }
+    .project-info {
+      padding: 1.5rem;
+    }
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .project-desc {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1rem;
+    }
+    .project-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .project-tag {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      background: var(--teal-dim);
+      border: 1px solid rgba(0,194,199,0.3);
+      border-radius: 20px;
+      color: var(--teal);
+    }
+    
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .skill-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .skill-item:hover {
+      border-color: var(--teal);
+      transform: translateY(-3px);
+    }
+    .skill-icon {
+      font-size: 2rem;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+    .skill-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    
+    /* ── CONTACT FORM ── */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--teal);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      color: var(--white);
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--teal);
+    }
+    .form-submit {
+      width: 100%;
+      padding: 1rem;
+      background: var(--accent-gradient);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(0,194,199,0.3);
+    }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+    
+    /* ── FOOTER ── */
+    footer {
+      background: rgba(10,29,55,0.5);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 2rem;
+      text-align: center;
+    }
+    .footer-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    .footer-copy {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+    
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-ring"></div>
+  </div>
+  
+  <!-- CURSOR -->
+  <div id="cursor"></div>
+  <div id="cursorTrail"></div>
+  
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="nav-logo">Mohammed Nafea</div>
+    <ul class="nav-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+  
+  <!-- HERO SECTION -->
+  <section id="hero" class="hero">
+    <div class="hero-content reveal">
+      <h1 class="hero-title">Mohammed Nafea</h1>
+      <p class="hero-subtitle">Motion Graphics Designer | 2D Animation | Video Editing</p>
+      <a href="#contact" class="hero-cta">
+        <i class="fab fa-whatsapp"></i>
+        Let's Work Together
+      </a>
+    </div>
+  </section>
+  
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <div class="reveal" style="max-width: 800px; margin: 0 auto; text-align: center;">
+      <span class="section-label">About Me</span>
+      <h2 class="section-title">Creative <span>Motion Designer</span></h2>
+      <div class="section-divider"></div>
+      <p style="font-size: 1.1rem; color: rgba(255,255,255,0.7); line-height: 1.8;">
+        I'm a passionate Motion Graphics Designer specializing in creating stunning visual content. With expertise in 2D animation, video editing, and visual storytelling, I bring ideas to life through dynamic animations and engaging visuals.
+      </p>
+    </div>
+  </section>
+  
+  <!-- PROJECTS SECTION -->
+  <section id="projects">
+    <div class="reveal" style="text-align: center;">
+      <span class="section-label">My Work</span>
+      <h2 class="section-title">Featured <span>Projects</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="projects-grid" id="projectsContainer">
+      <!-- Projects will be loaded dynamically -->
+    </div>
+  </section>
+  
+  <!-- SKILLS SECTION -->
+  <section id="skills">
+    <div class="reveal" style="text-align: center;">
+      <span class="section-label">Expertise</span>
+      <h2 class="section-title">My <span>Skills</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item reveal">
+        <div class="skill-icon"><i class="fas fa-film"></i></div>
+        <div class="skill-name">Motion Graphics</div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-icon"><i class="fas fa-magic"></i></div>
+        <div class="skill-name">2D Animation</div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-icon"><i class="fas fa-video"></i></div>
+        <div class="skill-name">Video Editing</div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-icon"><i class="fas fa-palette"></i></div>
+        <div class="skill-name">Adobe After Effects</div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-icon"><i class="fas fa-vector-square"></i></div>
+        <div class="skill-name">Adobe Illustrator</div>
+      </div>
+      <div class="skill-item reveal">
+        <div class="skill-icon"><i class="fas fa-image"></i></div>
+        <div class="skill-name">Adobe Photoshop</div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <div class="reveal" style="text-align: center;">
+      <span class="section-label">Get In Touch</span>
+      <h2 class="section-title">Let's <span>Connect</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <form class="contact-form reveal" id="whatsappForm" onsubmit="sendWhatsApp(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Name *</label>
+          <input type="text" id="wa-name" placeholder="Enter your name" required>
+        </div>
+        <div class="form-group">
+          <label>WhatsApp Number *</label>
+          <input type="text" id="wa-whatsapp" placeholder="e.g. +20 11 2651 0265" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Service *</label>
+        <select id="wa-service" required>
+          <option value="" selected disabled>Select Service</option>
+          <option value="motion graphics">Motion Graphics</option>
+          <option value="2d animation">2D Animation</option>
+          <option value="logo animation">Logo Animation</option>
+          <option value="video editing">Video Editing</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message *</label>
+        <textarea id="wa-message" rows="4" placeholder="Describe your project details..." required></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Message ✦</button>
+    </form>
+    <div id="whatsapp-success" style="display:none; text-align:center; padding:2rem; color:var(--teal);">
+      ✅ Opening WhatsApp... Please send the message to complete your request.
+    </div>
+  </section>
+  
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-name">Mohammed Nafea</div>
+    <div class="footer-copy">© 2026 All rights reserved</div>
+  </footer>
+  
+  <script>
+    // Initialize AOS
+    AOS.init({ duration: 800, once: true });
+    
+    // Loader
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hide');
+      }, 1400);
+    });
+    
+    // Cursor
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+             'ontouchstart' in window ||
+             navigator.maxTouchPoints > 0 ||
+             window.matchMedia('(hover: none)').matches ||
+             window.matchMedia('(pointer: coarse)').matches;
+    }
+    
+    if (!isMobileDevice()) {
+      const cursor = document.getElementById('cursor');
+      const trail = document.getElementById('cursorTrail');
+      let mx = 0, my = 0, tx = 0, ty = 0;
+      
+      document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        cursor.style.left = mx - 7 + 'px';
+        cursor.style.top  = my - 7 + 'px';
+      });
+      
+      function animTrail() {
+        tx += (mx - tx) * 0.12;
+        ty += (my - ty) * 0.12;
+        trail.style.left = tx - 18 + 'px';
+        trail.style.top  = ty - 18 + 'px';
+        requestAnimationFrame(animTrail);
+      }
+      animTrail();
+    } else {
+      const cursor = document.getElementById('cursor');
+      const trail = document.getElementById('cursorTrail');
+      if (cursor) cursor.style.display = 'none';
+      if (trail) trail.style.display = 'none';
+    }
+    
+    // Mobile Menu
+    function toggleMobileMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      const menuToggle = document.querySelector('.mobile-menu-toggle');
+      navLinks.classList.toggle('active');
+      menuToggle.classList.toggle('active');
+    }
+    
+    // Reveal on Scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    reveals.forEach(reveal => revealObserver.observe(reveal));
+    
+    // WhatsApp Form
+    function sendWhatsApp(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('wa-name').value.trim();
+      const whatsapp = document.getElementById('wa-whatsapp').value.trim();
+      const service = document.getElementById('wa-service').value;
+      const message = document.getElementById('wa-message').value.trim();
+      
+      const text = `مرحبا! أنا ${name}\nرقمي: ${whatsapp}\nالخدمة المطلوبة: ${service}\nالتفاصيل: ${message}`;
+      const whatsappNumber = '201126510265';
+      const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+      
+      window.open(waUrl, '_blank');
+      
+      document.getElementById('whatsappForm').style.display = 'none';
+      document.getElementById('whatsapp-success').style.display = 'block';
+    }
+    
+    // Load Projects from JSON
+    async function loadProjects() {
+      try {
+        const response = await fetch('data/projects.json');
+        const projects = await response.json();
+        const container = document.getElementById('projectsContainer');
+        
+        projects.forEach(project => {
+          const card = document.createElement('div');
+          card.className = 'project-card reveal';
+          card.innerHTML = `
+            <img src="${project.image || 'https://via.placeholder.com/400x300/0A1D37/00C2C7?text=Project'}" alt="${project.title}" class="project-image">
+            <div class="project-info">
+              <h3 class="project-title">${project.title}</h3>
+              <p class="project-desc">${project.description || ''}</p>
+              <div class="project-tags">
+                ${(project.tags || []).map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+        
+        // Observe new reveals
+        document.querySelectorAll('.project-card').forEach(card => revealObserver.observe(card));
+      } catch (error) {
+        console.log('Projects not loaded, using defaults');
+        // Default projects
+        const container = document.getElementById('projectsContainer');
+        const defaultProjects = [
+          { title: 'Motion Graphics Project', description: 'Dynamic animation showcase', tags: ['Motion Graphics', 'Animation'] },
+          { title: '2D Animation', description: 'Character animation work', tags: ['2D Animation', 'Character'] },
+          { title: 'Video Editing', description: 'Professional video production', tags: ['Video Editing', 'Production'] }
+        ];
+        
+        defaultProjects.forEach(project => {
+          const card = document.createElement('div');
+          card.className = 'project-card reveal';
+          card.innerHTML = `
+            <img src="https://via.placeholder.com/400x300/0A1D37/00C2C7?text=Project" alt="${project.title}" class="project-image">
+            <div class="project-info">
+              <h3 class="project-title">${project.title}</h3>
+              <p class="project-desc">${project.description}</p>
+              <div class="project-tags">
+                ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+              </div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      }
+    }
+    
+    loadProjects();
+  </script>
+</body>
+</html>
