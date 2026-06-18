@@ -306,7 +306,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      text-fill-color: transparent;
       animation: fadeUp 0.8s 0.3s forwards;
     }
     .hero-titles {
@@ -434,84 +433,81 @@
       color: var(--accent-1);
       font-weight: 700;
       text-transform: uppercase;
-      margin-bottom: 10px;
-      display: block;
+      margin-bottom: 12px;
     }
     .section-title {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
       font-weight: 700;
-      color: var(--white);
-      margin-bottom: 60px;
+      line-height: 1.2;
+      margin-bottom: 20px;
     }
-    .section-title span { 
+    .section-title span {
       background: var(--accent-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .section-divider {
-      width: 60px; height: 2px;
+      width: 80px;
+      height: 3px;
       background: var(--accent-gradient);
-      margin-bottom: 60px;
       border-radius: 2px;
+      margin: 30px 0;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* ── ABOUT ── */
     #about {
-      background: linear-gradient(180deg, var(--dark2) 0%, var(--dark) 100%);
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
     }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      max-width: 1100px;
+      gap: 60px;
+      max-width: 1200px;
       margin: 0 auto;
+      align-items: center;
     }
     .about-text p {
-      color: rgba(255,255,255,0.72);
-      line-height: 1.9;
-      font-size: 1rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.8;
       margin-bottom: 20px;
+      font-size: 1rem;
     }
     .about-stats {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
     }
-    .stat-card {
-      background: rgba(31, 41, 55, 0.5);
-      border: 1px solid rgba(75, 85, 99, 0.5);
-      border-radius: 16px;
-      padding: 28px 20px;
+    .stat-item {
       text-align: center;
+      padding: 25px;
+      background: var(--teal-dim);
+      border: 1px solid var(--teal-dim);
+      border-radius: 16px;
       transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
-    .stat-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: var(--accent-gradient);
-      transform: scaleX(0);
-      transition: transform 0.4s;
-    }
-    .stat-card:hover { 
-      transform: translateY(-6px); 
+    .stat-item:hover {
+      background: var(--gold-dim);
       border-color: var(--teal);
-      box-shadow: 0 8px 30px var(--teal-dim);
+      transform: translateY(-5px);
     }
-    .stat-card:hover::before { transform: scaleX(1); }
-    .stat-num {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: 2.4rem;
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
       background: var(--accent-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      font-weight: 700;
       line-height: 1;
     }
     .stat-label { color: rgba(255,255,255,0.6); font-size: 0.82rem; margin-top: 6px; }
@@ -533,596 +529,354 @@
     }
     .skills-inner { max-width: 1100px; margin: 0 auto; }
     
-    /* Adobe Suite Container */
     .adobe-suite-container {
-      margin: 3rem 0;
+      margin-top: 40px;
     }
-    
     .adobe-suite-title {
-      display: flex; align-items: center; gap: 12px;
-      font-weight: 700; 
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 2rem;
-      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--accent-1);
     }
-    
-    .skills-scroll-container {
-      position: relative;
-      overflow: hidden;
-      border-radius: 16px;
-      background: rgba(31, 41, 55, 0.3);
-      border: 1px solid rgba(75, 85, 99, 0.4);
-    }
-    
     .skills-scroll {
       display: flex;
-      gap: 1rem;
-      padding: 2rem 1rem;
-      animation: scrollSkills 20s linear infinite;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 20px 0;
+      scrollbar-width: none;
     }
-    
-    @keyframes scrollSkills {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    
+    .skills-scroll::-webkit-scrollbar { display: none; }
     .skill-icon {
-      flex: 0 0 auto;
-      width: 120px;
-      height: 120px;
-      background: rgba(31, 41, 55, 0.5);
-      border: 1px solid rgba(75, 85, 99, 0.5);
+      flex-shrink: 0;
+      width: 100px;
+      height: 100px;
       border-radius: 12px;
-      padding: 1rem;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    
-    .skill-icon:hover {
-      transform: translateY(-5px) scale(1.05);
-      background: var(--teal-dim);
-      border-color: var(--teal);
-      box-shadow: 0 8px 25px var(--teal-dim);
-    }
-    
-    .skill-icon svg {
-      width: 100%;
-      height: 100%;
-    }
-    
-    /* Clients Container */
-    .clients-container {
-      margin: 4rem 0 2rem 0;
-    }
-    
-    .clients-title {
-      display: flex; align-items: center; gap: 12px;
-      font-weight: 700; 
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 2rem;
-      font-size: 1.3rem;
-    }
-    
-    .clients-scroll-container {
-      position: relative;
-      overflow: hidden;
-      border-radius: 16px;
-      background: rgba(31, 41, 55, 0.3);
-      border: 1px solid rgba(75, 85, 99, 0.4);
-    }
-    
-    .clients-scroll {
-      display: flex;
-      gap: 2rem;
-      padding: 2rem 1rem;
-      animation: scrollClients 15s linear infinite;
-    }
-    
-    @keyframes scrollClients {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    
-    .client-logo {
-      flex: 0 0 auto;
-      min-width: 150px;
-      max-width: 200px;
-      height: 80px;
-      padding: 0.8rem 1rem;
-      background: rgba(31, 41, 55, 0.5);
-      border: 1px solid rgba(75, 85, 99, 0.5);
-      border-radius: 12px;
-      text-align: center;
-      font-weight: 600;
-      color: var(--accent-1);
-      transition: all 0.3s ease;
+      background: var(--dark2);
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .skill-icon:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px var(--teal-dim);
+    }
+    .clients-scroll {
+      display: flex;
+      gap: 30px;
+      overflow-x: auto;
+      padding: 20px 0;
+      scrollbar-width: none;
+    }
+    .clients-scroll::-webkit-scrollbar { display: none; }
+    .client-logo {
+      flex-shrink: 0;
+      width: 120px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--dark2);
+      border-radius: 12px;
+      transition: all 0.3s;
     }
     .client-logo img {
       max-width: 100%;
-      max-height: 60px;
-      width: auto;
-      height: auto;
+      max-height: 100%;
       object-fit: contain;
     }
-    
     .client-logo:hover {
-      transform: translateY(-3px);
-      background: var(--teal-dim);
-      border-color: var(--teal);
-      color: var(--white);
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px var(--gold-dim);
     }
 
     /* ── EXPERIENCE ── */
-    #experience { 
-      background: linear-gradient(180deg, var(--dark2) 0%, var(--dark) 100%);
-      position: relative;
+    #experience {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
     }
-    #experience .background-animation-container.type-design {
-      position: absolute;
-      inset: 0;
-    }
-    .exp-inner { max-width: 860px; margin: 0 auto; }
-    
-    /* Stats Grid */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin: 3rem 0;
-    }
-    
-    .stats-grid .stat-card {
-      background: rgba(31, 41, 55, 0.5);
-      border: 1px solid rgba(75, 85, 99, 0.5);
-      border-radius: 16px;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-    
-    .stats-grid .stat-card:hover {
-      transform: translateY(-5px);
-      background: var(--teal-dim);
-      border-color: var(--teal);
-      box-shadow: 0 8px 30px var(--teal-dim);
-    }
-    
-    .stats-grid .stat-number {
-      font-size: 3rem;
-      font-weight: 700;
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.5rem;
-      font-family: 'Playfair Display', serif;
-    }
-    
-    .stats-grid .stat-label {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.8);
-      line-height: 1.4;
-    }
-    .timeline { position: relative; padding-left: 40px; }
-    .timeline::before {
-      content: '';
-      position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
-      background: linear-gradient(180deg, var(--accent-1), var(--accent-2), transparent);
+    .exp-inner { max-width: 1000px; margin: 0 auto; }
+    .timeline {
+      margin-top: 50px;
     }
     .exp-item {
-      position: relative;
-      padding: 0 0 50px 50px;
-      opacity: 0;
-      transform: translateX(-30px);
-      transition: all 0.6s;
-    }
-    .exp-item.visible { opacity: 1; transform: translateX(0); }
-    .exp-dot {
-      position: absolute; left: -9px; top: 6px;
-      width: 20px; height: 20px;
+      padding: 30px;
       background: var(--dark2);
-      border: 2px solid var(--accent-1);
-      border-radius: 50%;
+      border-left: 3px solid var(--accent-1);
+      border-radius: 0 16px 16px 0;
+      margin-bottom: 30px;
       transition: all 0.3s;
     }
-    .exp-item:hover .exp-dot { 
-      background: var(--accent-gradient-135); 
-      box-shadow: 0 0 20px var(--teal); 
+    .exp-item:hover {
+      border-left-color: var(--accent-2);
+      transform: translateX(10px);
     }
     .exp-company {
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-size: 0.8rem;
+      font-size: 1.3rem;
       font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
+      color: var(--accent-1);
+      margin-bottom: 8px;
     }
     .exp-role {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 6px;
-    }
-    .exp-period {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 16px;
-      display: flex; align-items: center; gap: 6px;
-    }
-    .exp-bullets { list-style: none; }
-    .exp-bullets li {
-      color: rgba(255,255,255,0.7);
-      font-size: 0.9rem;
-      line-height: 1.7;
-      padding-left: 18px;
-      position: relative;
-      margin-bottom: 6px;
-    }
-    .exp-bullets li::before {
-      content: '▹';
-      position: absolute; left: 0;
-      color: var(--accent-1);
-    }
-
-    /* ── PROJECTS ── */
-    #projects { 
-      background: var(--dark);
-      position: relative;
-    }
-    #projects .background-animation-container.type-video {
-      position: absolute;
-      inset: 0;
-    }
-    .projects-inner { max-width: 1100px; margin: 0 auto; }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 28px;
-    }
-    .project-card {
-      background: rgba(31, 41, 55, 0.4);
-      border: 1px solid rgba(75, 85, 99, 0.4);
-      border-radius: 20px;
-      overflow: hidden;
-      transition: all 0.4s;
-      opacity: 0;
-      transform: translateY(24px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    }
-    .project-card.visible { opacity: 1; transform: translateY(0); }
-    .project-card:hover {
-      border-color: var(--teal);
-      transform: translateY(-8px);
-      box-shadow: 0 20px 60px var(--teal-dim);
-    }
-    .project-thumb {
-      height: 180px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .video-thumb:hover .play-overlay {
-      opacity: 1;
-    }
-    .play-overlay {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0.8;
-      transition: opacity 0.3s ease;
-      pointer-events: none;
-    }
-    .video-thumb:hover {
-      transform: scale(1.02);
-      transition: transform 0.3s ease;
-    }
-    .project-body { padding: 24px; }
-    .project-title {
       font-size: 1.1rem;
-      font-weight: 700;
+      font-weight: 600;
       color: var(--white);
       margin-bottom: 8px;
     }
-    .project-desc {
-      font-size: 0.85rem;
+    .exp-period {
+      font-size: 0.9rem;
       color: rgba(255,255,255,0.6);
-      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+    .exp-bullets {
+      list-style: none;
+      padding: 0;
+    }
+    .exp-bullets li {
+      color: rgba(255,255,255,0.8);
+      padding: 8px 0 8px 20px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .exp-bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent-2);
+    }
+
+    /* ── PROJECTS ── */
+    #projects {
+      background: var(--dark);
+    }
+    .projects-inner { max-width: 1200px; margin: 0 auto; }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    .project-card {
+      background: var(--dark2);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+    .project-thumb {
+      width: 100%;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.3);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .project-card:hover .play-overlay {
+      opacity: 1;
+    }
+    .project-info {
+      padding: 25px;
+    }
+    .project-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+    .project-desc {
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      margin-bottom: 15px;
     }
     .project-tag {
       display: inline-block;
-      margin-top: 14px;
+      padding: 6px 16px;
       background: var(--teal-dim);
       border: 1px solid var(--teal-dim);
-      color: var(--accent-2);
-      padding: 4px 12px;
       border-radius: 20px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 1px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-1);
     }
 
-    /* ── CERTS ── */
-    #certs { 
-      background: linear-gradient(180deg, var(--dark2) 0%, var(--dark) 100%);
-      position: relative;
-    }
-    #certs .background-animation-container.type-design {
-      position: absolute;
-      inset: 0;
+    /* ── CERTIFICATES ── */
+    #certs {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
     }
     .certs-inner { max-width: 1000px; margin: 0 auto; }
     .certs-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 50px;
     }
     .cert-card {
-      background: rgba(31, 41, 55, 0.4);
-      border: 1px solid rgba(75, 85, 99, 0.4);
-      border-radius: 14px;
-      padding: 22px 20px;
+      background: var(--dark2);
+      border-radius: 16px;
+      padding: 25px;
+      display: flex;
+      gap: 20px;
       transition: all 0.3s;
-      display: flex; gap: 16px; align-items: flex-start;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid transparent;
     }
-    .cert-card:hover { 
-      border-color: var(--teal); 
-      transform: translateY(-4px);
-      box-shadow: 0 8px 25px var(--teal-dim);
+    .cert-card:hover {
+      border-color: var(--accent-1);
+      transform: translateY(-5px);
     }
     .cert-icon {
-      width: 42px; height: 42px;
+      width: 50px;
+      height: 50px;
       background: var(--teal-dim);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      color: var(--accent-2);
-    }
-    .cert-info h4 { font-size: 0.9rem; color: var(--white); font-weight: 700; line-height: 1.4; }
-    .cert-info p { font-size: 0.75rem; color: var(--accent-1); margin-top: 4px; }
-    .cert-info span { font-size: 0.72rem; color: rgba(255,255,255,0.4); display: block; margin-top: 3px; }
-
-    /* ── CERTIFICATE MODAL ── */
-    .cert-modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.9);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-    .cert-modal.active {
-      display: flex;
-    }
-    .cert-modal-content {
-      background: linear-gradient(135deg, var(--dark), var(--dark));
-      border: 2px solid var(--teal-dim);
-      border-radius: 20px;
-      padding: 30px;
-      max-width: 90vw;
-      max-height: 90vh;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .cert-modal-close {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      width: 40px;
-      height: 40px;
-      background: rgba(255,255,255,0.1);
-      border: none;
-      border-radius: 50%;
-      color: #fff;
-      font-size: 1.5rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
-    }
-    .cert-modal-close:hover {
-      background: var(--gold-dim);
-      transform: rotate(90deg);
-    }
-    .cert-modal-title {
-      font-size: 1.3rem;
-      color: var(--accent-1);
-      font-weight: 700;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    .cert-modal-image {
-      max-width: 80vw;
-      max-height: 70vh;
       border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .cert-info h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--white);
+    }
+    .cert-info p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 5px;
+    }
+    .cert-info span {
+      font-size: 0.85rem;
+      color: var(--accent-1);
     }
 
     /* ── CONTACT ── */
     #contact {
-      background: var(--dark2);
-      text-align: center;
-      position: relative;
+      background: var(--dark);
     }
-    #contact .background-animation-container.type-motion {
-      position: absolute;
-      inset: 0;
-    }
-    .contact-inner { max-width: 700px; margin: 0 auto; }
-    .contact-subtitle {
-      color: rgba(255,255,255,0.6);
-      font-size: 1rem;
-      line-height: 1.8;
-      margin-bottom: 50px;
-    }
+    .contact-inner { max-width: 800px; margin: 0 auto; }
     .contact-form {
-      display: flex; flex-direction: column; gap: 18px;
-      margin-bottom: 50px;
-      text-align: right;
+      background: var(--dark2);
+      border-radius: 16px;
+      padding: 40px;
+      margin-top: 50px;
     }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .form-group { display: flex; flex-direction: column; gap: 7px; }
-    .form-group label { font-size: 0.8rem; color: rgba(255,255,255,0.6); font-weight: 600; letter-spacing: 1px; }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 10px;
-      padding: 14px 16px;
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
       color: var(--white);
-      font-family: 'Poppins', sans-serif;
-      font-size: 0.9rem;
-      direction: rtl;
-      transition: border-color 0.3s;
-      outline: none;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      background: var(--dark);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      color: var(--white);
+      font-size: 1rem;
+      transition: all 0.3s;
     }
     .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
       border-color: var(--accent-1);
       box-shadow: 0 0 0 3px var(--teal-dim);
     }
-    .form-group textarea { min-height: 120px; resize: vertical; }
-    .form-group select option { background: var(--dark); }
-    .form-submit {
-      background: var(--accent-gradient-135);
-      color: var(--dark);
-      border: none;
-      padding: 16px 50px;
-      border-radius: 50px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.3s;
-      align-self: center;
-      font-family: 'Poppins', sans-serif;
-      letter-spacing: 1px;
-    }
-    .form-submit:hover { 
-      transform: translateY(-3px) scale(1.02); 
-      box-shadow: 0 14px 40px var(--teal-dim); 
-    }
-    .form-submit:active { transform: scale(0.97); }
-
-    .form-success {
-      display: none;
-      background: var(--teal-dim);
-      border: 1px solid var(--teal-dim);
-      border-radius: 12px;
-      padding: 20px;
-      color: var(--accent-2);
-      font-size: 1rem;
-      font-weight: 600;
-      margin-top: 10px;
-    }
-
     .contact-links {
-      display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
-      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
     }
     .contact-link {
-      display: flex; align-items: center; gap: 10px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 50px;
-      padding: 12px 24px;
-      color: rgba(255,255,255,0.75);
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 600;
+      width: 50px;
+      height: 50px;
+      background: var(--dark2);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-1);
+      font-size: 1.3rem;
       transition: all 0.3s;
     }
     .contact-link:hover {
-      border-color: var(--accent-1);
-      color: var(--accent-1);
-      transform: translateY(-3px);
+      background: var(--accent-gradient-135);
+      color: var(--dark);
+      transform: translateY(-5px);
     }
 
     /* ── FOOTER ── */
     footer {
-      position: relative; z-index: 1;
-      border-top: 1px solid rgba(75, 85, 99, 0.5);
-      background: var(--dark);
-      padding: 36px 60px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px;
+      background: var(--dark2);
+      padding: 40px 60px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
     }
-    .footer-name {
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.7rem;
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
-    .footer-socials { display: flex; gap: 14px; }
     .footer-social {
-      width: 38px; height: 38px;
-      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .footer-social a {
+      width: 45px;
+      height: 45px;
+      background: var(--dark);
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.55);
-      text-decoration: none;
-      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-1);
+      font-size: 1.2rem;
       transition: all 0.3s;
     }
-    .footer-social:hover { 
-      border-color: var(--accent-1); 
-      color: var(--accent-1); 
+    .footer-social a:hover {
+      background: var(--accent-gradient-135);
+      color: var(--dark);
       transform: translateY(-3px);
-      box-shadow: 0 4px 15px var(--teal-dim);
     }
-
-    /* ── REVEAL ANIMATION ── */
-    .reveal { opacity:0; transform: translateY(30px); transition: all 0.7s ease; }
-    .reveal.visible { opacity:1; transform: translateY(0); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 16px 28px; }
-      .nav-links { gap: 20px; }
-      section { padding: 80px 28px; }
-      .about-grid { grid-template-columns: 1fr; gap: 50px; }
-      .form-row { grid-template-columns: 1fr; }
-      footer { padding: 28px; }
-    }
-    @media (max-width: 600px) {
-      .nav-links { display: none; }
-      .hero-name { font-size: 2.2rem; }
+    .footer-copyright {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
     }
 
     /* ── LOADER ── */
     #loader {
-      position: fixed; inset: 0; z-index: 1000;
-      background: var(--dark2);
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 20px;
-      transition: opacity 0.6s;
+      position: fixed;
+      inset: 0;
+      background: var(--dark);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s, visibility 0.5s;
     }
-    #loader.hide { opacity: 0; pointer-events: none; }
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
     .loader-name {
       font-family: 'Dancing Script', cursive;
       font-size: 3rem;
@@ -1130,584 +884,96 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      margin-bottom: 20px;
     }
     .loader-bar {
-      width: 200px; height: 3px;
-      background: rgba(75, 85, 99, 0.5);
+      width: 200px;
+      height: 4px;
+      background: var(--dark2);
       border-radius: 2px;
       overflow: hidden;
     }
     .loader-fill {
       height: 100%;
       background: var(--accent-gradient);
-      border-radius: 2px;
-      animation: loaderFill 1.2s ease forwards;
+      width: 0;
+      animation: load 2s ease-out forwards;
     }
-    @keyframes loaderFill { from { width: 0; } to { width: 100%; } }
+    @keyframes load {
+      to { width: 100%; }
+    }
 
-    /* PAINT STROKE DECORATION */
-    .paint-stroke {
+    /* ── CERTIFICATE MODAL ── */
+    .cert-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 10001;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .cert-modal.active {
+      display: flex;
+    }
+    .cert-modal-content {
+      background: var(--dark2);
+      border-radius: 16px;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow: auto;
+      position: relative;
+    }
+    .cert-modal-close {
       position: absolute;
-      pointer-events: none;
-      opacity: 0.05;
+      top: 15px;
+      right: 15px;
+      background: var(--dark);
+      border: none;
+      color: var(--white);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 10;
     }
-    
-    /* SVG brush strokes with new colors */
-    .paint-stroke path {
-      stroke: var(--accent-1);
+    .cert-modal-title {
+      padding: 20px;
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--white);
     }
-    .paint-stroke:nth-child(2) path {
-      stroke: var(--accent-2);
+    .cert-modal-image {
+      width: 100%;
+      height: auto;
+      display: block;
     }
-  </style>
 
-  <!-- Mobile Responsive CSS -->
-  <style>
-    /* Mobile Navigation */
+    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
+      nav { padding: 15px 20px; }
       .nav-links {
         position: fixed;
         top: 0;
-        left: -100%;
-        width: 320px;
+        right: -100%;
+        width: 70%;
         height: 100vh;
-        background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+        background: var(--dark2);
         flex-direction: column;
-        padding: 100px 40px 40px;
-        box-shadow: 5px 0 30px rgba(0,0,0,0.5);
-        transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1000;
-        overflow-y: auto;
-        border-right: 1px solid rgba(75, 85, 99, 0.5);
-      }
-      
-      .nav-links.active {
-        left: 0;
-      }
-      
-      .nav-links a {
-        font-size: 1.2rem;
-        padding: 18px 0;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-        color: rgba(255,255,255,0.9);
-        text-decoration: none;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-      
-      .nav-links a::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 3px;
-        background: var(--accent-gradient);
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
-      }
-      
-      .nav-links a:hover {
-        color: var(--accent-1);
-        padding-right: 10px;
-      }
-      
-      .nav-links a:hover::before {
-        transform: translateX(0);
-      }
-      
-      .nav-links a.active {
-        color: var(--accent-2) !important;
-        font-weight: 700;
-      }
-      
-      .nav-links a.active::before {
-        transform: translateX(0);
-        background: var(--accent-gradient);
-      }
-      
-            
-      /* Add overlay when menu is open */
-      .nav-links.active::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 320px;
-        right: 0;
-        bottom: 0;
-        background: rgba(0,0,0,0.5);
-        z-index: -1;
-      }
-    }
-
-    /* Mobile Hero */
-    @media (max-width: 768px) {
-      #hero {
-        padding: 100px 20px 60px;
-        min-height: 90vh;
-      }
-      
-      .hero-photo-wrap {
-        width: 140px;
-        height: 140px;
-      }
-      
-      .hero-tag {
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-      }
-      
-      .hero-name {
-        font-size: 2.5rem;
-      }
-      
-      .hero-quote {
-        font-size: 1rem;
-        max-width: 90%;
-      }
-      
-      .hero-cta {
-        flex-direction: column;
-        gap: 15px;
-        width: 100%;
-        max-width: 280px;
-      }
-      
-      .btn-primary, .btn-secondary {
-        width: 100%;
-        padding: 12px 20px;
-        font-size: 0.95rem;
-      }
-    }
-
-    /* Mobile Sections */
-    @media (max-width: 768px) {
-      .section-inner {
-        padding: 60px 20px;
-      }
-      
-      .section-title {
-        font-size: 2rem;
-      }
-      
-      .section-label {
-        font-size: 0.85rem;
-        letter-spacing: 1px;
-      }
-      
-      .section-divider {
-        width: 60px;
-        height: 3px;
-        margin: 15px auto 40px;
-      }
-    }
-
-    /* Mobile About */
-    @media (max-width: 768px) {
-      .about-content {
-        flex-direction: column;
-        gap: 40px;
-        text-align: center;
-      }
-      
-      .about-text h2 {
-        font-size: 1.8rem;
-      }
-      
-      .about-text p {
-        font-size: 1rem;
-        line-height: 1.7;
-      }
-      
-      .about-stats {
-        justify-content: center;
-        gap: 20px;
-      }
-      
-      .stat-item {
-        min-width: 120px;
-      }
-      
-      .stat-number {
-        font-size: 1.8rem;
-      }
-      
-      .stat-label {
-        font-size: 0.85rem;
-      }
-    }
-
-    /* Mobile Skills */
-    @media (max-width: 768px) {
-      .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      
-      .skill-group {
-        padding: 20px;
-      }
-      
-      .skill-group-title {
-        font-size: 1rem;
-      }
-      
-      .skill-tags {
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      
-      .skill-tag {
-        font-size: 0.85rem;
-        padding: 6px 12px;
-      }
-    }
-
-    /* Mobile Experience */
-    @media (max-width: 768px) {
-      .timeline {
-        padding-right: 20px;
-      }
-      
-      .timeline::before {
-        left: 15px;
-      }
-      
-      .exp-item {
-        padding-left: 50px;
-        margin-bottom: 30px;
-      }
-      
-      .exp-dot {
-        left: 5px;
-        width: 20px;
-        height: 20px;
-      }
-      
-      .exp-company {
-        font-size: 1.1rem;
-      }
-      
-      .exp-role {
-        font-size: 0.95rem;
-      }
-      
-      .exp-period {
-        font-size: 0.85rem;
-      }
-      
-      .exp-bullets li {
-        font-size: 0.9rem;
-        margin-bottom: 8px;
-      }
-    }
-
-    /* Mobile Projects */
-    @media (max-width: 768px) {
-      .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      
-      .project-card {
-        flex-direction: column;
-        text-align: center;
-      }
-      
-      .project-thumb {
-        width: 100%;
-        height: 200px;
-        margin-bottom: 20px;
-      }
-      
-      .project-info {
-        flex: 1;
-      }
-      
-      .project-title {
-        font-size: 1.2rem;
-      }
-      
-      .project-desc {
-        font-size: 0.9rem;
-      }
-      
-      .project-tag {
-        font-size: 0.8rem;
-        padding: 4px 10px;
-      }
-    }
-
-    /* Mobile Certificates */
-    @media (max-width: 768px) {
-      .certs-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      
-      .cert-card {
-        padding: 20px;
-      }
-      
-      .cert-info h4 {
-        font-size: 1rem;
-      }
-      
-      .cert-info p {
-        font-size: 0.9rem;
-      }
-      
-      .cert-info span {
-        font-size: 0.8rem;
-      }
-    }
-
-    /* Mobile Contact */
-    @media (max-width: 768px) {
-      .contact-form {
-        max-width: 100%;
-      }
-      
-      .form-group {
-        margin-bottom: 20px;
-      }
-      
-      .form-group label {
-        font-size: 0.95rem;
-        margin-bottom: 8px;
-      }
-      
-      .form-group input,
-      .form-group textarea,
-      .form-group select {
-        padding: 12px 15px;
-        font-size: 0.95rem;
-      }
-      
-      .form-row {
-        flex-direction: column;
-        gap: 0;
-      }
-      
-      .btn-submit {
-        width: 100%;
-        padding: 15px;
-        font-size: 1rem;
-      }
-    }
-
-    /* Mobile Footer */
-    @media (max-width: 768px) {
-      footer {
-        padding: 30px 20px;
-        text-align: center;
-      }
-      
-      .footer-content {
-        flex-direction: column;
-        gap: 20px;
-      }
-      
-      .footer-social {
-        justify-content: center;
-      }
-      
-      .footer-bottom {
-        font-size: 0.85rem;
-      }
-    }
-
-    /* Mobile Dashboard */
-    @media (max-width: 768px) {
-      .header {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px;
-      }
-      
-      .header h1 {
-        font-size: 1.2rem;
-      }
-      
-      .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-      }
-      
-      .nav-links a {
-        font-size: 0.85rem;
-        padding: 6px 12px;
-      }
-      
-      .logout a {
-        font-size: 0.85rem;
-        padding: 6px 15px;
-      }
-      
-      .section-selector {
-        padding: 15px;
-      }
-      
-      .section-selector select {
-        width: 100%;
-        max-width: none;
-      }
-      
-      .form-group {
-        margin-bottom: 20px;
-      }
-      
-      .form-group label {
-        font-size: 0.95rem;
-      }
-      
-      .form-group input,
-      .form-group textarea {
-        padding: 12px;
-        font-size: 0.95rem;
-      }
-      
-      .btn {
-        width: 100%;
-        padding: 12px;
-        font-size: 1rem;
-      }
-      
-      .mini-project-item {
-        flex-direction: column;
-        gap: 15px;
-      }
-      
-      .mini-project-actions {
-        flex-direction: row;
-        justify-content: center;
-      }
-      
-      .section-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      
-      .section-order {
-        width: 100%;
-      }
-    }
-
-    /* Very Small Screens */
-    @media (max-width: 480px) {
-      .hero-name {
-        font-size: 2rem;
-      }
-      
-      .section-title {
-        font-size: 1.8rem;
-      }
-      
-      .project-thumb {
-        height: 150px;
-      }
-      
-      .header h1 {
-        font-size: 1rem;
-      }
-      
-      .nav-links a {
-        font-size: 0.8rem;
-        padding: 5px 10px;
-      }
-    }
-
-    /* Hide custom cursor on mobile devices */
-    @media (max-width: 768px), (hover: none) and (pointer: coarse) {
-      #cursor,
-      #cursor-trail {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-      }
-      
-      /* Disable cursor-related JavaScript effects on mobile */
-      body {
-        cursor: default !important;
-      }
-      
-      /* Hide scroll indicator on mobile */
-      .scroll-ind {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-      }
-    }
-
-    /* Hide scrollbar on mobile devices */
-    @media (max-width: 768px) {
-      ::-webkit-scrollbar {
-        display: none;
-      }
-      
-      html {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-      
-      body {
-        overflow-x: hidden;
-      }
-    }
-
-    /* Disable text selection and copying globally */
-    * {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      -webkit-touch-callout: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    /* Allow text selection for inputs and textareas in forms */
-    input, textarea, select {
-      -webkit-user-select: text;
-      -moz-user-select: text;
-      -ms-user-select: text;
-      user-select: text;
-    }
-
-    /* Disable right-click context menu */
-    body {
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -khtml-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    /* Disable drag and drop */
-    img, svg, video, audio {
-      -webkit-user-drag: none;
-      -khtml-user-drag: none;
-      -moz-user-drag: none;
-      -o-user-drag: none;
-      user-drag: none;
-      pointer-events: none;
-    }
-
-    /* Allow interaction for navigation and buttons */
-    nav, button, a, .btn, .btn-primary, .btn-secondary, .contact-link, .footer-social {
-      pointer-events: auto;
-    }
-
-    /* Allow dashboard form interactions */
-    .form-group input, .form-group textarea, .form-group select, .btn, .section-selector select {
-      -webkit-user-select: text;
-      -moz-user-select: text;
-      -ms-user-select: text;
-      user-select: text;
-      pointer-events: auto;
+        padding: 100px 30px;
+        transition: right 0.3s;
+      }
+      .nav-links.active { right: 0; }
+      .mobile-menu-toggle { display: flex; }
+      section { padding: 80px 20px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .certs-grid { grid-template-columns: 1fr; }
+      .hero-content { padding: 0 20px; }
+      #hero { padding: 100px 20px 60px; }
     }
   </style>
 </head>
@@ -1738,37 +1004,13 @@
     <span></span>
   </button>
   <ul class="nav-links">
-     ['name' => 'Home', 'href' => '#hero'],
-      'about' => ['name' => 'About', 'href' => '#about'],
-      'skills' => ['name' => 'Skills', 'href' => '#skills'],
-      'experience' => ['name' => 'Experience', 'href' => '#experience'],
-      'projects' => ['name' => 'Projects', 'href' => '#projects'],
-      'certs' => ['name' => 'Certificates', 'href' => '#certs'],
-      'contact' => ['name' => 'Contact', 'href' => '#contact']
-    ];
-    
-    // Debug: Check if sections array is loaded
-    if (empty($sections) || !is_array($sections)) {
-        // Fallback to all sections visible if data not loaded
-        foreach ($navSections as $key => $section) {
-          echo '<li><a href="' . htmlspecialchars($section['href']) . '" onclick="navigateToSection(\'' . htmlspecialchars($section['href']) . '\')">' . htmlspecialchars($section['name']) . '</a></li>';
-        }
-    } else {
-        $visibleSections = [];
-        foreach ($navSections as $key => $section) {
-          $isVisible = isset($sections[$key]['visible']) ? $sections[$key]['visible'] : true;
-          if ($isVisible) {
-            $order = isset($sections[$key]['order']) ? $sections[$key]['order'] : 999;
-            $visibleSections[$key] = $section + ['order' => $order];
-          }
-        }
-        uasort($visibleSections, fn($a,$b) => $a['order'] <=> $b['order']);
-        
-        foreach ($visibleSections as $key => $section) {
-          echo '<li><a href="' . htmlspecialchars($section['href']) . '" onclick="navigateToSection(\'' . htmlspecialchars($section['href']) . '\')">' . htmlspecialchars($section['name']) . '</a></li>';
-        }
-    }
-    
+    <li><a href="#hero" onclick="navigateToSection('#hero')">Home</a></li>
+    <li><a href="#about" onclick="navigateToSection('#about')">About</a></li>
+    <li><a href="#skills" onclick="navigateToSection('#skills')">Skills</a></li>
+    <li><a href="#experience" onclick="navigateToSection('#experience')">Experience</a></li>
+    <li><a href="#projects" onclick="navigateToSection('#projects')">Projects</a></li>
+    <li><a href="#certs" onclick="navigateToSection('#certs')">Certificates</a></li>
+    <li><a href="#contact" onclick="navigateToSection('#contact')">Contact</a></li>
   </ul>
 </nav>
 
@@ -1820,21 +1062,28 @@
       <span class="section-label">About Me</span>
       <h2 class="section-title">Transforming Ideas into<br><span>Motion & Inspiration</span></h2>
       <div class="section-divider"></div>
-      ' . htmlspecialchars($line) . '</p>';
-      }
-      
+      <p>I am a passionate Motion Graphics Designer with expertise in creating compelling visual stories through 2D animation, video editing, and creative design. With a keen eye for detail and a deep understanding of visual storytelling, I bring ideas to life through motion.</p>
+      <p>Specializing in the MENA region, I work with brands to create engaging content that resonates with audiences across different cultures and platforms. From social media animations to promotional videos, I deliver high-quality motion graphics that elevate brand messaging.</p>
       <div style="margin-top:30px;">
         <a href="mailto:mohammednafea700@gmail.com" class="btn-gold" style="font-size:0.85rem;padding:12px 28px;">Contact Me</a>
       </div>
     </div>
     <div class="about-stats reveal">
-      <div class="stat-card">
-        <div class="stat-num">3+</div>
+      <div class="stat-item">
+        <div class="stat-number">3+</div>
         <div class="stat-label">Years Experience</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-num">8+</div>
-        <div class="stat-label">Projects in MENA Region</div>
+      <div class="stat-item">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Client Satisfaction</div>
       </div>
     </div>
   </div>
@@ -1859,89 +1108,26 @@
           <rect x="3" y="3" width="18" height="18" rx="2"/>
           <path d="M9 9h6v6H9z"/>
         </svg>
-        Adobe Creative Suite
+        Programs I Use
       </div>
-      
-      <div class="skills-scroll-container">
-        <div class="skills-scroll">
-          'After Effects','image'=>'','color'=>'#9999FF'],
-            ['program'=>'Premiere Pro','image'=>'','color'=>'#9999FF'],
-            ['program'=>'Illustrator','image'=>'','color'=>'#FF9A00'],
-            ['program'=>'Photoshop','image'=>'','color'=>'#31A8FF'],
-            ['program'=>'Character Animator','image'=>'','color'=>'#9999FF'],
-            ['program'=>'Audition','image'=>'','color'=>'#9999FF']
-          ];
-          // First set of skills
-          foreach ($adobeItems as $skill):
-            $bgColor = $skill['color'] ?? '#9999FF';
-          
-            <div class="skill-icon">
-              
-                <img src="uploads/ htmlspecialchars($skill['image']) " alt=" htmlspecialchars($skill['program']) " style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-              
-                <div style="width:100%;height:100%;background:linear-gradient(135deg, htmlspecialchars($bgColor) 20, htmlspecialchars($bgColor) 40);border-radius:12px;display:flex;align-items:center;justify-content:center;color: htmlspecialchars($bgColor) ;font-weight:600;font-size:0.7rem;text-align:center;padding:5px;border:1px solid  htmlspecialchars($bgColor) 60;">
-                   htmlspecialchars($skill['program']) 
-                </div>
-              
-            </div>
-          
-          
-              
-                <img src="uploads/ htmlspecialchars($skill['image']) " alt=" htmlspecialchars($skill['program']) " style="width:100%;height:100%;object-fit:cover;border-radius:12px;">
-              
-                <div style="width:100%;height:100%;background:linear-gradient(135deg, htmlspecialchars($bgColor) 20, htmlspecialchars($bgColor) 40);border-radius:12px;display:flex;align-items:center;justify-content:center;color: htmlspecialchars($bgColor) ;font-weight:600;font-size:0.7rem;text-align:center;padding:5px;border:1px solid  htmlspecialchars($bgColor) 60;">
-                   htmlspecialchars($skill['program']) 
-                </div>
-              
-            </div>
-          
-        </div>
+      <div class="skills-scroll" id="skillsScroll">
+        <!-- Skills will be loaded dynamically -->
       </div>
     </div>
-    
-    <!-- Clients Section -->
+
+    <!-- Trusted Clients -->
     <div class="clients-container">
-      <div class="clients-title">
+      <div class="adobe-suite-title">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2">
-          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-          <circle cx="8.5" cy="7" r="4"/>
-          <path d="M20 8v6M23 11h-6"/>
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
         </svg>
         Trusted Clients
       </div>
-      
-      <div class="clients-scroll-container">
-        <div class="clients-scroll">
-          'IBAN','logo'=>''],
-            ['name'=>'Digital Scope','logo'=>''],
-            ['name'=>'BSM','logo'=>''],
-            ['name'=>'Gulf Tourism','logo'=>''],
-            ['name'=>'Education Hub','logo'=>''],
-            ['name'=>'Auto Brand','logo'=>''],
-            ['name'=>'Tech Corp','logo'=>''],
-            ['name'=>'Media Agency','logo'=>'']
-          ];
-          foreach ($clientItems as $client):
-          
-            <div class="client-logo">
-              
-                <img src="uploads/ htmlspecialchars($client['logo']) " alt=" htmlspecialchars($client['name']) ">
-              
-                 htmlspecialchars($client['name']) 
-              
-            </div>
-          
-          <!-- Duplicate for seamless loop -->
-          
-            <div class="client-logo" aria-hidden="true">
-              
-                <img src="uploads/ htmlspecialchars($client['logo']) " alt=" htmlspecialchars($client['name']) ">
-              
-                 htmlspecialchars($client['name']) 
-              
-            </div>
-          
-        </div>
+      <div class="clients-scroll" id="clientsScroll">
+        <!-- Clients will be loaded dynamically -->
       </div>
     </div>
   </div>
@@ -1959,29 +1145,8 @@
       <div class="section-divider"></div>
     </div>
     
-        
-    <div class="timeline">
-      'IBAN Company','role'=>'Motion Graphics Designer','period'=>'December 2024 – Present · Remote','bullets'=>['Delivering custom 2D motion graphics for automotive industry brands','Transforming visual concepts into smooth animations for social media and promotions','Collaborating with marketing teams to ensure brand visual consistency']],
-        ['company'=>'Digital Scope','role'=>'Motion Graphics Designer','period'=>'March 2024 – December 2024 · Remote','bullets'=>['Creating animated content for clients in tourism and education sectors across Gulf region','Increasing social media engagement by 50% through clean motion design']],
-        ['company'=>'BSM Company','role'=>'Motion Graphics Designer','period'=>'November 2023 – January 2024 · Remote','bullets'=>['Producing motion graphics for product showcases, resulting in 25% increase in product awareness','Developing promotional content for electronics optimized for Instagram and mobile']]
-      ];
-      foreach ($experienceItems as $exp):
-      
-        <div class="exp-item">
-          <div class="exp-dot"></div>
-          <div class="exp-company"> htmlspecialchars($exp['company']) </div>
-          <div class="exp-role"> htmlspecialchars($exp['role']) </div>
-          <div class="exp-period">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-             htmlspecialchars($exp['period']) 
-          </div>
-          <ul class="exp-bullets">
-            
-              <li> htmlspecialchars($bullet) </li>
-            
-          </ul>
-        </div>
-      
+    <div class="timeline" id="experienceTimeline">
+      <!-- Experience will be loaded dynamically -->
     </div>
   </div>
 </section>
@@ -1997,39 +1162,8 @@
       <h2 class="section-title">Featured <span>Projects</span></h2>
       <div class="section-divider"></div>
     </div>
-    <div class="projects-grid">
-      
-        
-          <div class="project-card">
-            
-              
-                <div class="play-overlay">
-                  <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                  </svg>
-                </div>
-              
-                <div style="font-family:'Dancing Script',cursive;font-size:2.5rem;color:#D4AF37;font-weight:bold;border:3px solid #D4AF37;width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;">MN</div>
-              
-            </div>
-            <div class="project-info">
-              <h3 class="project-title" 
-                  
-                  onclick="window.open(' htmlspecialchars($youtubeUrl) ', '_blank')" 
-                  style="cursor:pointer;"
-                  >
-                 htmlspecialchars($proj['title']) 
-              </h3>
-              <p class="project-desc"> htmlspecialchars($proj['desc']) </p>
-              
-                <span class="project-tag"> htmlspecialchars($proj['tag']) </span>
-              
-            </div>
-          </div>
-        
-      
-        <div style="grid-column:1/-1;text-align:center;color:rgba(255,255,255,0.5);">No projects currently available.</div>
-      
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Projects will be loaded dynamically -->
     </div>
   </div>
 </section>
@@ -2038,46 +1172,15 @@
 
 <!-- CERTIFICATES -->
 <section id="certs">
-  <div class="background-animation-container type-design"></div>
+  <div class="background-animation-container type-motion"></div>
   <div class="certs-inner">
     <div class="reveal">
-      <span class="section-label">Achievements</span>
-      <h2 class="section-title">Certificates <span>& Awards</span></h2>
+      <span class="section-label">Credentials</span>
+      <h2 class="section-title">Professional <span>Certificates</span></h2>
       <div class="section-divider"></div>
     </div>
-    <div class="certs-grid">
-      'cert_1','title'=>'NASA Space Apps Challenge 2025','issuer'=>'NASA International Space Apps','period'=>'2025','desc'=>'Participated in NASA International Space Apps Challenge — Galactic Local Track with 2D animation guide project.','icon'=>'fas fa-rocket','image'=>''],
-        ['id'=>'cert_2','title'=>'DEPI Round 3 – Media Production Influencer Track','issuer'=>'MCIT – Ministry of Communications','period'=>'06/2025 – 12/2025','desc'=>'Advanced media production and influencer marketing certification.','icon'=>'fas fa-video','image'=>''],
-        ['id'=>'cert_3','title'=>'DEPI Round 1 – Digital Arts Track – Certificate of Achievement','issuer'=>'YAT Learning Centers','period'=>'August 2025','desc'=>'Certificate of Achievement in Digital Arts.','icon'=>'fas fa-palette','image'=>''],
-        ['id'=>'cert_4','title'=>'DEPI – Adobe Motion Graphics Designer (6 months)','issuer'=>'MCIT – Ministry of Communications','period'=>'05/2024 – 11/2024','desc'=>'6 months intensive program on Adobe Motion Graphics.','icon'=>'fas fa-certificate','image'=>''],
-        ['id'=>'cert_5','title'=>'Outstanding Leadership & Exceptional Contributions','issuer'=>'Digital Egypt Pioneers Initiative (DEPI)','period'=>'05/2024 – 11/2024','desc'=>'Recognition for outstanding performance and leadership.','icon'=>'fas fa-award','image'=>''],
-        ['id'=>'cert_6','title'=>'Adobe Illustrator Mega Course – Beginner to Advanced','issuer'=>'Udemy (18.5 hours)','period'=>'01/2023 – 03/2023','desc'=>'Beginner to Advanced Adobe Illustrator certification.','icon'=>'fas fa-graduation-cap','image'=>'']
-      ];
-      foreach ($certificatesItems as $cert):
-        $hasImage = !empty($cert['image']);
-        $onclick = $hasImage ? 'onclick="openCertModal(\'' . htmlspecialchars($cert['id']) . '\', \'' . htmlspecialchars(addslashes($cert['title'])) . '\', \'' . htmlspecialchars($cert['image']) . '\')" style="cursor: pointer;"' : '';
-      
-        <div class="cert-card reveal"  $onclick >
-          <div class="cert-icon">
-            
-              <i class=" htmlspecialchars($cert['icon']) " style="color: #D4AF37; font-size: 20px;"></i>
-            
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            
-          </div>
-          <div class="cert-info">
-            <h4> htmlspecialchars($cert['title']) </h4>
-            <p> htmlspecialchars($cert['issuer']) </p>
-            <span> htmlspecialchars($cert['period']) </span>
-            
-              <p style="margin-top: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.6);"> htmlspecialchars($cert['desc']) </p>
-            
-            
-              <p style="margin-top: 8px; font-size: 0.8rem; color: var(--red-400);"><i class="fas fa-image"></i> اضغط لعرض الشهادة</p>
-            
-          </div>
-        </div>
-      
+    <div class="certs-grid" id="certsGrid">
+      <!-- Certificates will be loaded dynamically -->
     </div>
   </div>
 </section>
@@ -2086,508 +1189,368 @@
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="background-animation-container type-motion"></div>
   <div class="contact-inner">
     <div class="reveal">
-      <span class="section-label">Let's Work Together</span>
-      <h2 class="section-title">Start Your <span>Project</span> Now</h2>
-      <div class="section-divider" style="margin: 0 auto 40px;"></div>
-      <p class="contact-subtitle">
-        ');
-        }
-        
-      </p>
-    </div>
-
-    
-        ✅ Your message has been sent successfully! We'll contact you soon on WhatsApp.
-      </div>
-    
-    <form class="contact-form reveal" id="whatsappForm" onsubmit="sendWhatsApp(event)">
-      <div class="form-row">
-        <div class="form-group">
-          <label>Name *</label>
-          <input type="text" id="wa-name" placeholder="Enter your name" required>
-        </div>
-        <div class="form-group">
-          <label>WhatsApp Number *</label>
-          <input type="text" id="wa-whatsapp" placeholder="e.g. +20 11 2651 0265" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Service *</label>
-        <select id="wa-service" required>
-          <option value="" selected disabled>Select Service</option>
-          <option value="motion graphics">Motion Graphics</option>
-          <option value="2d animation">2D Animation</option>
-          <option value="logo animation">Logo Animation</option>
-          <option value="video editing">Video Editing</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Message *</label>
-        <textarea id="wa-message" rows="4" placeholder="Describe your project details..." required></textarea>
-      </div>
-      <button type="submit" class="form-submit">Send Message ✦</button>
-    </form>
-    <div id="whatsapp-success" class="form-success" style="display:none;">
-      ✅ Opening WhatsApp... Please send the message to complete your request.
+      <span class="section-label">Get In Touch</span>
+      <h2 class="section-title">Let's <span>Connect</span></h2>
+      <div class="section-divider"></div>
     </div>
     
+    <div class="contact-form">
+      <form id="whatsappForm" onsubmit="sendWhatsApp(event)">
+        <div class="form-group">
+          <label for="wa-name">الاسم</label>
+          <input type="text" id="wa-name" required placeholder="أدخل اسمك">
+        </div>
+        <div class="form-group">
+          <label for="wa-whatsapp">رقم الواتساب</label>
+          <input type="tel" id="wa-whatsapp" required placeholder="رقم الواتساب الخاص بك">
+        </div>
+        <div class="form-group">
+          <label for="wa-service">الخدمة المطلوبة</label>
+          <select id="wa-service" required>
+            <option value="">اختر الخدمة</option>
+            <option value="Motion Graphics">Motion Graphics</option>
+            <option value="Video Editing">Video Editing</option>
+            <option value="2D Animation">2D Animation</option>
+            <option value="Social Media Content">Social Media Content</option>
+            <option value="Other">أخرى</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="wa-message">تفاصيل المشروع</label>
+          <textarea id="wa-message" rows="5" required placeholder="اكتب تفاصيل المشروع هنا..."></textarea>
+        </div>
+        <button type="submit" class="btn-gold" style="width:100%;justify-content:center;">إرسال عبر واتساب</button>
+      </form>
+      <div id="whatsapp-success" style="display:none;text-align:center;padding:40px;">
+        <div style="font-size:3rem;color:#00C2C7;margin-bottom:20px;">✓</div>
+        <h3 style="color:#D4AF37;margin-bottom:10px;">تم الإرسال بنجاح!</h3>
+        <p style="color:rgba(255,255,255,0.7);">سيتم فتح واتساب الآن لإرسال الرسالة.</p>
+      </div>
+    </div>
 
-    <div class="contact-links reveal">
-      <a href="mailto:mohammednafea700@gmail.com" class="contact-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        mohammednafea700@gmail.com
-      </a>
-      <a href="tel:+201126510265" class="contact-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <span dir="ltr">(+20) 112 651 0265</span>
-      </a>
-      <a href="https://www.linkedin.com/in/motiondesigner-mohammednafea" target="_blank" class="contact-link">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        LinkedIn Profile
-      </a>
+    <div class="contact-links">
+      <a href="https://wa.me/201126510265" target="_blank" class="contact-link"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:mohammednafea700@gmail.com" class="contact-link"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/motiondesigner-mohammednafea" target="_blank" class="contact-link"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.behance.net/mohammednafea" target="_blank" class="contact-link"><i class="fab fa-behance"></i></a>
     </div>
   </div>
 </section>
+
+
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-name">Mohammed Nafea</div>
-  <div class="footer-copy">©  date('Y')  All rights reserved · Developer: Mostafa Algezawy</div>
-  <div class="footer-socials">
-    <a href="https://www.linkedin.com/in/motiondesigner-mohammednafea" target="_blank" class="footer-social">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-    </a>
-    <a href="mailto:mohammednafea700@gmail.com" class="footer-social">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-    </a>
+  <div class="footer-social">
+    <a href="https://wa.me/201126510265" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="mailto:mohammednafea700@gmail.com"><i class="fas fa-envelope"></i></a>
+    <a href="https://www.linkedin.com/in/motiondesigner-mohammednafea" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://www.behance.net/mohammednafea" target="_blank"><i class="fab fa-behance"></i></a>
+  </div>
+  <div class="footer-copyright">
+    © 2024 Mohammed Nafea. All Rights Reserved.
   </div>
 </footer>
-</section>
 
+<!-- Certificate Modal -->
+<div id="certModal" class="cert-modal" onclick="if(event.target === this) closeCertModal();">
+  <div class="cert-modal-content">
+    <button class="cert-modal-close" onclick="closeCertModal()">&times;</button>
+    <h3 id="certModalTitle" class="cert-modal-title"></h3>
+    <img id="certModalImage" class="cert-modal-image" src="" alt="">
+  </div>
+</div>
 
 <script>
+// ── LOAD DATA FROM JSON FILES ──
+async function loadData() {
+  try {
+    const [content, projects, theme, sections, certificates, skillsClients] = await Promise.all([
+      fetch('data/content.json').then(r => r.json()).catch(() => ({})),
+      fetch('data/projects.json').then(r => r.json()).catch(() => []),
+      fetch('data/theme.json').then(r => r.json()).catch(() => ({})),
+      fetch('data/sections.json').then(r => r.json()).catch(() => ({})),
+      fetch('data/certificates.json').then(r => r.json()).catch(() => []),
+      fetch('data/skills_clients.json').then(r => r.json()).catch(() => ({}))
+    ]);
+
+    // Update content
+    if (content.hero_name) document.querySelector('.hero-name').textContent = content.hero_name;
+    if (content.hero_quote) document.querySelector('.hero-quote').textContent = content.hero_quote;
+    if (content.about_title) document.querySelector('#about .section-title').innerHTML = content.about_title;
+    if (content.skills_title) document.querySelector('#skills .section-title').innerHTML = content.skills_title;
+    if (content.experience_title) document.querySelector('#experience .section-title').innerHTML = content.experience_title;
+    if (content.projects_title) document.querySelector('#projects .section-title').innerHTML = content.projects_title;
+
+    // Update theme colors
+    if (theme['--dark']) document.documentElement.style.setProperty('--dark', theme['--dark']);
+    if (theme['--teal']) document.documentElement.style.setProperty('--teal', theme['--teal']);
+    if (theme['--white']) document.documentElement.style.setProperty('--white', theme['--white']);
+    if (theme['--gold']) document.documentElement.style.setProperty('--gold', theme['--gold']);
+
+    // Update sections visibility
+    if (sections.hero && !sections.hero.visible) document.getElementById('hero').style.display = 'none';
+    if (sections.about && !sections.about.visible) document.getElementById('about').style.display = 'none';
+    if (sections.skills && !sections.skills.visible) document.getElementById('skills').style.display = 'none';
+    if (sections.experience && !sections.experience.visible) document.getElementById('experience').style.display = 'none';
+    if (sections.projects && !sections.projects.visible) document.getElementById('projects').style.display = 'none';
+    if (sections.certs && !sections.certs.visible) document.getElementById('certs').style.display = 'none';
+    if (sections.contact && !sections.contact.visible) document.getElementById('contact').style.display = 'none';
+
+    // Load projects
+    if (projects && projects.length > 0) {
+      const projectsGrid = document.getElementById('projectsGrid');
+      if (projectsGrid) {
+        projectsGrid.innerHTML = '';
+        projects.forEach(proj => {
+          const youtubeUrl = proj.youtube || '';
+          let videoId = '';
+          if (youtubeUrl) {
+            if (youtubeUrl.includes('youtube.com/watch?v=')) {
+              videoId = youtubeUrl.split('v=')[1].split('&')[0];
+            } else if (youtubeUrl.includes('youtu.be/')) {
+              videoId = youtubeUrl.split('youtu.be/')[1].split('?')[0];
+            }
+          }
+
+          const projectCard = document.createElement('div');
+          projectCard.className = 'project-card';
+          projectCard.innerHTML = `
+            <div class="project-thumb video-thumb" 
+                 ${videoId ? `style="background-image:url('https://img.youtube.com/vi/${videoId}/maxresdefault.jpg');background-size:cover;background-position:center;cursor:pointer;position:relative;" onclick="window.open('${youtubeUrl}', '_blank')"` 
+                 : `style="background:linear-gradient(135deg,#0A1D37,#00C2C7);display:flex;align-items:center;justify-content:center;"`}>
+              ${videoId ? `<div class="play-overlay"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>` 
+              : `<div style="font-family:'Dancing Script',cursive;font-size:2.5rem;color:#D4AF37;font-weight:bold;border:3px solid #D4AF37;width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;">MN</div>`}
+            </div>
+            <div class="project-info">
+              <h3 class="project-title" ${youtubeUrl ? `onclick="window.open('${youtubeUrl}', '_blank')" style="cursor:pointer;"` : ''}>${proj.title}</h3>
+              <p class="project-desc">${proj.desc}</p>
+              ${proj.tag ? `<span class="project-tag">${proj.tag}</span>` : ''}
+            </div>
+          `;
+          projectsGrid.appendChild(projectCard);
+        });
+      }
+    }
+
+    // Load certificates
+    if (certificates && certificates.length > 0) {
+      const certsGrid = document.getElementById('certsGrid');
+      if (certsGrid) {
+        certsGrid.innerHTML = '';
+        certificates.forEach(cert => {
+          const hasImage = cert.image && cert.image.length > 0;
+          const onclick = hasImage ? `onclick="openCertModal('${cert.id}', '${cert.title.replace(/'/g, "\\'")}', '${cert.image}')" style="cursor: pointer;"` : '';
+          
+          const certCard = document.createElement('div');
+          certCard.className = 'cert-card reveal';
+          if (onclick) certCard.setAttribute('onclick', onclick.replace('onclick=', ''));
+          
+          certCard.innerHTML = `
+            <div class="cert-icon">
+              ${cert.icon ? `<i class="${cert.icon}" style="color: #D4AF37; font-size: 20px;"></i>` 
+              : `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`}
+            </div>
+            <div class="cert-info">
+              <h4>${cert.title}</h4>
+              <p>${cert.issuer}</p>
+              <span>${cert.period}</span>
+              ${cert.desc ? `<p style="margin-top: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.6);">${cert.desc}</p>` : ''}
+              ${hasImage ? `<p style="margin-top: 8px; font-size: 0.8rem; color: #00C2C7;"><i class="fas fa-image"></i> اضغط لعرض الشهادة</p>` : ''}
+            </div>
+          `;
+          certsGrid.appendChild(certCard);
+        });
+      }
+    }
+
+    // Load skills and clients
+    if (skillsClients) {
+      // Load Adobe skills
+      if (skillsClients.adobe_creative_suite && skillsClients.adobe_creative_suite.items) {
+        const skillsScroll = document.getElementById('skillsScroll');
+        if (skillsScroll) {
+          const adobeItems = skillsClients.adobe_creative_suite.items;
+          skillsScroll.innerHTML = '';
+          adobeItems.forEach(skill => {
+            const bgColor = skill.color || '#9999FF';
+            const skillIcon = document.createElement('div');
+            skillIcon.className = 'skill-icon';
+            if (skill.image) {
+              skillIcon.innerHTML = `<img src="uploads/${skill.image}" alt="${skill.program}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">`;
+            } else {
+              skillIcon.innerHTML = `<div style="width:100%;height:100%;background:linear-gradient(135deg,${bgColor}20,${bgColor}40);border-radius:12px;display:flex;align-items:center;justify-content:center;color:${bgColor};font-weight:600;font-size:0.7rem;text-align:center;padding:5px;border:1px solid ${bgColor}60;">${skill.program}</div>`;
+            }
+            skillsScroll.appendChild(skillIcon);
+          });
+        }
+      }
+
+      // Load clients
+      if (skillsClients.trusted_clients && skillsClients.trusted_clients.items) {
+        const clientsScroll = document.getElementById('clientsScroll');
+        if (clientsScroll) {
+          const clientItems = skillsClients.trusted_clients.items;
+          clientsScroll.innerHTML = '';
+          clientItems.forEach(client => {
+            const clientLogo = document.createElement('div');
+            clientLogo.className = 'client-logo';
+            if (client.logo) {
+              clientLogo.innerHTML = `<img src="uploads/${client.logo}" alt="${client.name}">`;
+            } else {
+              clientLogo.innerHTML = client.name;
+            }
+            clientsScroll.appendChild(clientLogo);
+          });
+        }
+      }
+    }
+
+    // Load experience
+    if (content.experience_items) {
+      const experienceItems = typeof content.experience_items === 'string' ? JSON.parse(content.experience_items) : content.experience_items;
+      if (experienceItems && experienceItems.length > 0) {
+        const experienceTimeline = document.getElementById('experienceTimeline');
+        if (experienceTimeline) {
+          experienceTimeline.innerHTML = '';
+          experienceItems.forEach(exp => {
+            const expItem = document.createElement('div');
+            expItem.className = 'exp-item';
+            expItem.innerHTML = `
+              <div class="exp-company">${exp.company}</div>
+              <div class="exp-role">${exp.role}</div>
+              <div class="exp-period">${exp.period}</div>
+              <ul class="exp-bullets">
+                ${exp.bullets ? exp.bullets.map(bullet => `<li>${bullet}</li>`).join('') : ''}
+              </ul>
+            `;
+            experienceTimeline.appendChild(expItem);
+          });
+        }
+      }
+    }
+
+  } catch (error) {
+    console.error('Error loading data:', error);
+  }
+}
+
+// Load data when page loads
+document.addEventListener('DOMContentLoaded', loadData);
+
 // ── LOADER ──
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('loader').classList.add('hide');
-  }, 1400);
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    document.getElementById('loader').classList.add('hidden');
+  }, 1500);
 });
 
-// ── CURSOR ──
-// Check if device is mobile or touch device
-function isMobileDevice() {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
-         'ontouchstart' in window ||
-         navigator.maxTouchPoints > 0 ||
-         window.matchMedia('(hover: none)').matches ||
-         window.matchMedia('(pointer: coarse)').matches;
-}
+// ── CUSTOM CURSOR ──
+const cursor = document.getElementById('cursor');
+const cursorTrail = document.getElementById('cursorTrail');
 
-// Only initialize cursor effects on desktop
-if (!isMobileDevice()) {
-  const cursor = document.getElementById('cursor');
-  const trail = document.getElementById('cursorTrail');
-  let mx = 0, my = 0, tx = 0, ty = 0;
+document.addEventListener('mousemove', function(e) {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
   
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx - 7 + 'px';
-    cursor.style.top  = my - 7 + 'px';
-  });
-  
-  function animTrail() {
-    tx += (mx - tx) * 0.12;
-    ty += (my - ty) * 0.12;
-    trail.style.left = tx - 18 + 'px';
-    trail.style.top  = ty - 18 + 'px';
-    requestAnimationFrame(animTrail);
-  }
-  animTrail();
-} else {
-  // Hide cursor elements on mobile
-  const cursor = document.getElementById('cursor');
-  const trail = document.getElementById('cursorTrail');
-  if (cursor) cursor.style.display = 'none';
-  if (trail) trail.style.display = 'none';
-}
+  setTimeout(function() {
+    cursorTrail.style.left = e.clientX + 'px';
+    cursorTrail.style.top = e.clientY + 'px';
+  }, 50);
+});
 
 // ── MOBILE MENU ──
 function toggleMobileMenu() {
   const navLinks = document.querySelector('.nav-links');
-  const menuToggle = document.querySelector('.mobile-menu-toggle');
-  const isActive = navLinks.classList.contains('active');
-  
-  if (!isActive) {
-    // Create overlay if it doesn't exist
-    if (!document.querySelector('.menu-overlay')) {
-      const overlay = document.createElement('div');
-      overlay.className = 'menu-overlay';
-      overlay.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0,0,0,0.5);
-        z-index: 999;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-      `;
-      overlay.addEventListener('click', closeMobileMenu);
-      document.body.appendChild(overlay);
-    }
-    
-    // Show overlay
-    const overlay = document.querySelector('.menu-overlay');
-    setTimeout(() => {
-      overlay.style.opacity = '1';
-      overlay.style.visibility = 'visible';
-    }, 10);
-  } else {
-    // Hide overlay
-    const overlay = document.querySelector('.menu-overlay');
-    if (overlay) {
-      overlay.style.opacity = '0';
-      overlay.style.visibility = 'hidden';
-    }
-  }
-  
   navLinks.classList.toggle('active');
-  menuToggle.classList.toggle('active');
 }
 
-function closeMobileMenu() {
-  const navLinks = document.querySelector('.nav-links');
-  const menuToggle = document.querySelector('.mobile-menu-toggle');
-  const overlay = document.querySelector('.menu-overlay');
-  
-  navLinks.classList.remove('active');
-  menuToggle.classList.remove('active');
-  
-  if (overlay) {
-    overlay.style.opacity = '0';
-    overlay.style.visibility = 'hidden';
+// ── SMOOTH NAVIGATION ──
+function navigateToSection(sectionId) {
+  const section = document.querySelector(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+    // Close mobile menu if open
+    document.querySelector('.nav-links').classList.remove('active');
   }
 }
-
-function navigateToSection(href) {
-  // Close mobile menu
-  closeMobileMenu();
-  
-  // Smooth scroll to section
-  const targetId = href.substring(1); // Remove # from href
-  const targetSection = document.getElementById(targetId);
-  
-  if (targetSection) {
-    // Calculate offset for mobile (considering header height)
-    const offset = window.innerWidth <= 768 ? 80 : 100;
-    const targetPosition = targetSection.offsetTop - offset;
-    
-    // Smooth scroll
-    window.scrollTo({
-      top: targetPosition,
-      behavior: 'smooth'
-    });
-    
-    // Update active nav link
-    setTimeout(() => {
-      const navLinks = document.querySelectorAll('.nav-links a');
-      navLinks.forEach(a => {
-        if (a.getAttribute('href') === href) {
-          a.classList.add('active');
-        } else {
-          a.classList.remove('active');
-        }
-      });
-    }, 500);
-  }
-  
-  // Prevent default link behavior
-  return false;
-}
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', function(event) {
-  const navLinks = document.querySelector('.nav-links');
-  const menuToggle = document.querySelector('.mobile-menu-toggle');
-  
-  if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
-    closeMobileMenu();
-  }
-});
-
-// ── DISABLE COPY AND PASTE ──
-// Disable right-click context menu
-document.addEventListener('contextmenu', function(e) {
-  e.preventDefault();
-  return false;
-});
-
-// Disable text selection shortcuts
-document.addEventListener('keydown', function(e) {
-  // Disable Ctrl+A (select all)
-  if (e.ctrlKey && e.key === 'a') {
-    e.preventDefault();
-    return false;
-  }
-  
-  // Disable Ctrl+C (copy)
-  if (e.ctrlKey && e.key === 'c') {
-    e.preventDefault();
-    return false;
-  }
-  
-  // Disable Ctrl+X (cut)
-  if (e.ctrlKey && e.key === 'x') {
-    e.preventDefault();
-    return false;
-  }
-  
-  // Disable Ctrl+V (paste) - only outside forms
-  if (e.ctrlKey && e.key === 'v') {
-    const target = e.target;
-    if (!target.matches('input, textarea')) {
-      e.preventDefault();
-      return false;
-    }
-  }
-  
-  // Disable F12 (developer tools)
-  if (e.key === 'F12') {
-    e.preventDefault();
-    return false;
-  }
-  
-  // Disable Ctrl+Shift+I (developer tools)
-  if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-    e.preventDefault();
-    return false;
-  }
-  
-  // Disable Ctrl+Shift+J (console)
-  if (e.ctrlKey && e.shiftKey && e.key === 'J') {
-    e.preventDefault();
-    return false;
-  }
-  
-  // Disable Ctrl+U (view source)
-  if (e.ctrlKey && e.key === 'u') {
-    e.preventDefault();
-    return false;
-  }
-});
-
-// Disable drag events
-document.addEventListener('dragstart', function(e) {
-  e.preventDefault();
-  return false;
-});
-
-// Disable select start
-document.addEventListener('selectstart', function(e) {
-  const target = e.target;
-  if (!target.matches('input, textarea')) {
-    e.preventDefault();
-    return false;
-  }
-});
-
-// Allow text selection only in specific elements
-document.addEventListener('mousedown', function(e) {
-  const allowedElements = 'input, textarea, select';
-  if (!e.target.matches(allowedElements) && !e.target.closest(allowedElements)) {
-    e.preventDefault();
-  }
-});
-
-// ── CANVAS PARTICLES ──
-const canvas = document.getElementById('bg-canvas');
-const ctx = canvas.getContext('2d');
-let W, H, particles = [];
-
-function resize() {
-  W = canvas.width = window.innerWidth;
-  H = canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener('resize', resize);
-
-class Particle {
-  constructor() { this.reset(); }
-  reset() {
-    this.x = Math.random() * W;
-    this.y = Math.random() * H;
-    this.r = Math.random() * 1.8 + 0.3;
-    this.vx = (Math.random() - 0.5) * 0.3;
-    this.vy = (Math.random() - 0.5) * 0.3;
-    this.alpha = Math.random() * 0.5 + 0.1;
-    this.color = Math.random() > 0.5 ? '0,194,199' : '212,175,55';
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${this.color},${this.alpha})`;
-    ctx.fill();
-    this.x += this.vx; this.y += this.vy;
-    if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
-  }
-}
-
-for (let i = 0; i < 120; i++) particles.push(new Particle());
-
-// Animated paint lines
-let lineT = 0;
-function drawLines() {
-  lineT += 0.004;
-  // Wavy teal brush
-  ctx.beginPath();
-  for (let x = 0; x <= W; x += 4) {
-    const y = H * 0.3 + Math.sin(x * 0.006 + lineT) * 60 + Math.sin(x * 0.012 + lineT * 1.3) * 30;
-    x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-  }
-  ctx.strokeStyle = 'rgba(0,194,199,0.04)';
-  ctx.lineWidth = 40;
-  ctx.stroke();
-
-  // Gold accent line
-  ctx.beginPath();
-  for (let x = 0; x <= W; x += 4) {
-    const y = H * 0.7 + Math.sin(x * 0.007 - lineT * 1.2) * 50 + Math.cos(x * 0.014 + lineT) * 25;
-    x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-  }
-  ctx.strokeStyle = 'rgba(212,175,55,0.04)';
-  ctx.lineWidth = 30;
-  ctx.stroke();
-}
-
-function animate() {
-  ctx.clearRect(0, 0, W, H);
-  drawLines();
-  particles.forEach(p => p.draw());
-  requestAnimationFrame(animate);
-}
-animate();
 
 // ── SCROLL REVEAL ──
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add('visible');
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.reveal, .exp-item, .project-card').forEach(el => observer.observe(el));
-
-// ── SMOOTH NAV ──
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
-
-// ── NAV ACTIVE ──
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-
-function updateActiveNav() {
-  let current = '';
-  sections.forEach(s => {
-    const sectionTop = s.offsetTop - 100;
-    if (window.scrollY >= sectionTop) current = s.id;
-  });
-  
-  navLinks.forEach(a => {
-    const href = a.getAttribute('href');
-    if (href === '#' + current) {
-      a.classList.add('active');
-      // For desktop, also update color
-      if (window.innerWidth > 768) {
-        a.style.color = 'var(--accent-2)';
-      }
-    } else {
-      a.classList.remove('active');
-      // For desktop, reset color
-      if (window.innerWidth > 768) {
-        a.style.color = '';
-      }
+function reveal() {
+  const reveals = document.querySelectorAll('.reveal');
+  reveals.forEach(element => {
+    const windowHeight = window.innerHeight;
+    const elementTop = element.getBoundingClientRect().top;
+    const elementVisible = 150;
+    
+    if (elementTop < windowHeight - elementVisible) {
+      element.classList.add('visible');
     }
   });
 }
 
-window.addEventListener('scroll', updateActiveNav);
+window.addEventListener('scroll', reveal);
+reveal();
 
-// Update active nav when menu opens (mobile)
-const originalToggleMobileMenu = toggleMobileMenu;
-toggleMobileMenu = function() {
-  originalToggleMobileMenu();
-  if (window.innerWidth <= 768) {
-    setTimeout(updateActiveNav, 100);
-  }
-};
+// ── ACTIVE NAV HIGHLIGHT ──
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-links a');
 
-// ── INITIALIZE AOS ANIMATIONS ──
-AOS.init({
-  duration: 1000,
-  once: true,
-  offset: 50,
+window.addEventListener('scroll', function() {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (pageYOffset >= sectionTop - 200) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
 });
 
-// ── NAVBAR SCROLL EFFECT ──
-const navbar = document.querySelector('nav');
-window.addEventListener('scroll', () => {
+// ── NAV SCROLL EFFECT ──
+window.addEventListener('scroll', function() {
+  const nav = document.querySelector('nav');
   if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
+    nav.classList.add('scrolled');
   } else {
-    navbar.classList.remove('scrolled');
+    nav.classList.remove('scrolled');
   }
 });
 
-// ── ANIMATED BACKGROUNDS ──
-const backgroundData = {
-  motion: [
-    { icon: '<i class="fas fa-video"></i>', color: 'text-red-400/10' },
-    { icon: '<i class="fas fa-film"></i>', color: 'text-orange-400/10' },
-    { icon: '<i class="fas fa-play-circle"></i>', color: 'text-red-500/10' },
-    { icon: '<i class="fas fa-photo-video"></i>', color: 'text-orange-500/10' },
-  ],
-  design: [
-    { icon: '<i class="fas fa-palette"></i>', color: 'text-red-400/10' },
-    { icon: '<i class="fas fa-pen-nib"></i>', color: 'text-orange-400/10' },
-    { icon: '<i class="fas fa-brush"></i>', color: 'text-red-500/10' },
-    { icon: '<i class="fas fa-shapes"></i>', color: 'text-orange-500/10' },
-  ],
-  video: [
-    { icon: '<i class="fas fa-video"></i>', color: 'text-red-400/10' },
-    { icon: '<i class="fas fa-film"></i>', color: 'text-orange-400/10' },
-    { icon: '<i class="fas fa-clapperboard"></i>', color: 'text-red-500/10' },
-    { icon: '<i class="fas fa-camera"></i>', color: 'text-orange-500/10' },
-  ]
-};
+// ── AOS INITIALIZATION ──
+AOS.init({
+  duration: 800,
+  easing: 'ease-in-out',
+  once: true
+});
 
+// ── GSAP ANIMATIONS ──
+gsap.registerPlugin(ScrollTrigger);
+
+// Animate background elements
 function createBackgroundElements(container, type) {
-  const currentElements = backgroundData[type];
-  if (!currentElements) return;
-
-  for (let i = 0; i < 15; i++) {
+  const colors = type === 'motion' ? ['#00C2C7', '#D4AF37'] : 
+                  type === 'design' ? ['#FF6B6B', '#4ECDC4'] : 
+                  ['#A8E6CF', '#FFD93D'];
+  
+  for (let i = 0; i < 8; i++) {
     const element = document.createElement('div');
-    element.className = `background-animated-element ${currentElements[i % currentElements.length].color} type-${type}`;
-    element.innerHTML = currentElements[i % currentElements.length].icon;
-    
-    // Set random position and icon size
-    element.style.left = `${Math.random() * 100}%`;
-    element.style.top = `${Math.random() * 100}%`;
-    const size = 2 + Math.random() * 3;
-    element.style.fontSize = `${size}rem`;
-    
-    // Set animation delay
-    element.style.animationDelay = `${Math.random() * 10}s`;
-
+    element.className = 'background-animated-element type-' + type;
+    element.style.left = Math.random() * 100 + '%';
+    element.style.top = Math.random() * 100 + '%';
+    element.style.width = (Math.random() * 100 + 50) + 'px';
+    element.style.height = element.style.width;
+    element.style.background = colors[Math.floor(Math.random() * colors.length)];
+    element.style.animationDelay = Math.random() * 5 + 's';
     container.appendChild(element);
   }
 }
@@ -2661,187 +1624,6 @@ function sendWhatsApp(event) {
   document.getElementById('whatsapp-success').style.display = 'block';
 }
 
-// ── LOAD DATA FROM JSON FILES ──
-// Load content data
-async function loadData() {
-  try {
-    const [content, projects, theme, sections, certificates, skillsClients] = await Promise.all([
-      fetch('data/content.json').then(r => r.json()).catch(() => ({})),
-      fetch('data/projects.json').then(r => r.json()).catch(() => []),
-      fetch('data/theme.json').then(r => r.json()).catch(() => ({})),
-      fetch('data/sections.json').then(r => r.json()).catch(() => ({})),
-      fetch('data/certificates.json').then(r => r.json()).catch(() => []),
-      fetch('data/skills_clients.json').then(r => r.json()).catch(() => ({}))
-    ]);
-
-    // Update content
-    if (content.hero_name) document.querySelector('.hero-name').textContent = content.hero_name;
-    if (content.hero_quote) document.querySelector('.hero-quote').textContent = content.hero_quote;
-    if (content.about_title) document.querySelector('#about .section-title').innerHTML = content.about_title;
-    if (content.skills_title) document.querySelector('#skills .section-title').innerHTML = content.skills_title;
-    if (content.experience_title) document.querySelector('#experience .section-title').innerHTML = content.experience_title;
-    if (content.projects_title) document.querySelector('#projects .section-title').innerHTML = content.projects_title;
-
-    // Update theme colors
-    if (theme['--dark']) document.documentElement.style.setProperty('--dark', theme['--dark']);
-    if (theme['--teal']) document.documentElement.style.setProperty('--teal', theme['--teal']);
-    if (theme['--white']) document.documentElement.style.setProperty('--white', theme['--white']);
-    if (theme['--gold']) document.documentElement.style.setProperty('--gold', theme['--gold']);
-
-    // Update sections visibility
-    if (sections.hero && !sections.hero.visible) document.getElementById('hero').style.display = 'none';
-    if (sections.about && !sections.about.visible) document.getElementById('about').style.display = 'none';
-    if (sections.skills && !sections.skills.visible) document.getElementById('skills').style.display = 'none';
-    if (sections.experience && !sections.experience.visible) document.getElementById('experience').style.display = 'none';
-    if (sections.projects && !sections.projects.visible) document.getElementById('projects').style.display = 'none';
-    if (sections.certs && !sections.certs.visible) document.getElementById('certs').style.display = 'none';
-    if (sections.contact && !sections.contact.visible) document.getElementById('contact').style.display = 'none';
-
-    // Load projects
-    if (projects && projects.length > 0) {
-      const projectsGrid = document.querySelector('.projects-grid');
-      if (projectsGrid) {
-        projectsGrid.innerHTML = '';
-        projects.forEach(proj => {
-          const youtubeUrl = proj.youtube || '';
-          let videoId = '';
-          if (youtubeUrl) {
-            if (youtubeUrl.includes('youtube.com/watch?v=')) {
-              videoId = youtubeUrl.split('v=')[1].split('&')[0];
-            } else if (youtubeUrl.includes('youtu.be/')) {
-              videoId = youtubeUrl.split('youtu.be/')[1].split('?')[0];
-            }
-          }
-
-          const projectCard = document.createElement('div');
-          projectCard.className = 'project-card';
-          projectCard.innerHTML = `
-            <div class="project-thumb video-thumb" 
-                 ${videoId ? `style="background-image:url('https://img.youtube.com/vi/${videoId}/maxresdefault.jpg');background-size:cover;background-position:center;cursor:pointer;position:relative;" onclick="window.open('${youtubeUrl}', '_blank')"` 
-                 : `style="background:linear-gradient(135deg,#0A1D37,#00C2C7);display:flex;align-items:center;justify-content:center;"`}>
-              ${videoId ? `<div class="play-overlay"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg></div>` 
-              : `<div style="font-family:'Dancing Script',cursive;font-size:2.5rem;color:#D4AF37;font-weight:bold;border:3px solid #D4AF37;width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;">MN</div>`}
-            </div>
-            <div class="project-info">
-              <h3 class="project-title" ${youtubeUrl ? `onclick="window.open('${youtubeUrl}', '_blank')" style="cursor:pointer;"` : ''}>${proj.title}</h3>
-              <p class="project-desc">${proj.desc}</p>
-              ${proj.tag ? `<span class="project-tag">${proj.tag}</span>` : ''}
-            </div>
-          `;
-          projectsGrid.appendChild(projectCard);
-        });
-      }
-    }
-
-    // Load certificates
-    if (certificates && certificates.length > 0) {
-      const certsGrid = document.querySelector('.certs-grid');
-      if (certsGrid) {
-        certsGrid.innerHTML = '';
-        certificates.forEach(cert => {
-          const hasImage = cert.image && cert.image.length > 0;
-          const onclick = hasImage ? `onclick="openCertModal('${cert.id}', '${cert.title.replace(/'/g, "\\'")}', '${cert.image}')" style="cursor: pointer;"` : '';
-          
-          const certCard = document.createElement('div');
-          certCard.className = 'cert-card reveal';
-          certCard.setAttribute(onclick ? '' : 'data-onclick', onclick);
-          if (onclick) certCard.setAttribute('onclick', onclick.replace('onclick=', ''));
-          
-          certCard.innerHTML = `
-            <div class="cert-icon">
-              ${cert.icon ? `<i class="${cert.icon}" style="color: #D4AF37; font-size: 20px;"></i>` 
-              : `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`}
-            </div>
-            <div class="cert-info">
-              <h4>${cert.title}</h4>
-              <p>${cert.issuer}</p>
-              <span>${cert.period}</span>
-              ${cert.desc ? `<p style="margin-top: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.6);">${cert.desc}</p>` : ''}
-              ${hasImage ? `<p style="margin-top: 8px; font-size: 0.8rem; color: var(--red-400);"><i class="fas fa-image"></i> اضغط لعرض الشهادة</p>` : ''}
-            </div>
-          `;
-          certsGrid.appendChild(certCard);
-        });
-      }
-    }
-
-    // Load skills and clients
-    if (skillsClients) {
-      // Load Adobe skills
-      if (skillsClients.adobe_creative_suite && skillsClients.adobe_creative_suite.items) {
-        const skillsScroll = document.querySelector('.skills-scroll');
-        if (skillsScroll) {
-          const adobeItems = skillsClients.adobe_creative_suite.items;
-          skillsScroll.innerHTML = '';
-          // First set
-          adobeItems.forEach(skill => {
-            const bgColor = skill.color || '#9999FF';
-            const skillIcon = document.createElement('div');
-            skillIcon.className = 'skill-icon';
-            if (skill.image) {
-              skillIcon.innerHTML = `<img src="uploads/${skill.image}" alt="${skill.program}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">`;
-            } else {
-              skillIcon.innerHTML = `<div style="width:100%;height:100%;background:linear-gradient(135deg,${bgColor}20,${bgColor}40);border-radius:12px;display:flex;align-items:center;justify-content:center;color:${bgColor};font-weight:600;font-size:0.7rem;text-align:center;padding:5px;border:1px solid ${bgColor}60;">${skill.program}</div>`;
-            }
-            skillsScroll.appendChild(skillIcon);
-          });
-          // Duplicate set for seamless loop
-          adobeItems.forEach(skill => {
-            const bgColor = skill.color || '#9999FF';
-            const skillIcon = document.createElement('div');
-            skillIcon.className = 'skill-icon';
-            skillIcon.setAttribute('aria-hidden', 'true');
-            if (skill.image) {
-              skillIcon.innerHTML = `<img src="uploads/${skill.image}" alt="${skill.program}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">`;
-            } else {
-              skillIcon.innerHTML = `<div style="width:100%;height:100%;background:linear-gradient(135deg,${bgColor}20,${bgColor}40);border-radius:12px;display:flex;align-items:center;justify-content:center;color:${bgColor};font-weight:600;font-size:0.7rem;text-align:center;padding:5px;border:1px solid ${bgColor}60;">${skill.program}</div>`;
-            }
-            skillsScroll.appendChild(skillIcon);
-          });
-        }
-      }
-
-      // Load clients
-      if (skillsClients.trusted_clients && skillsClients.trusted_clients.items) {
-        const clientsScroll = document.querySelector('.clients-scroll');
-        if (clientsScroll) {
-          const clientItems = skillsClients.trusted_clients.items;
-          clientsScroll.innerHTML = '';
-          // First set
-          clientItems.forEach(client => {
-            const clientLogo = document.createElement('div');
-            clientLogo.className = 'client-logo';
-            if (client.logo) {
-              clientLogo.innerHTML = `<img src="uploads/${client.logo}" alt="${client.name}">`;
-            } else {
-              clientLogo.innerHTML = client.name;
-            }
-            clientsScroll.appendChild(clientLogo);
-          });
-          // Duplicate set for seamless loop
-          clientItems.forEach(client => {
-            const clientLogo = document.createElement('div');
-            clientLogo.className = 'client-logo';
-            clientLogo.setAttribute('aria-hidden', 'true');
-            if (client.logo) {
-              clientLogo.innerHTML = `<img src="uploads/${client.logo}" alt="${client.name}">`;
-            } else {
-              clientLogo.innerHTML = client.name;
-            }
-            clientsScroll.appendChild(clientLogo);
-          });
-        }
-      }
-    }
-
-  } catch (error) {
-    console.error('Error loading data:', error);
-  }
-}
-
-// Load data when page loads
-document.addEventListener('DOMContentLoaded', loadData);
-
 // ── LIVE THEME UPDATE FROM DASHBOARD ──
 // Listen for theme updates from parent dashboard (for live preview)
 window.addEventListener('message', function(e) {
@@ -2855,17 +1637,5 @@ window.addEventListener('message', function(e) {
 });
 </script>
 
-<!-- Certificate Modal -->
-<div id="certModal" class="cert-modal" onclick="if(event.target === this) closeCertModal();">
-  <div class="cert-modal-content">
-    <button class="cert-modal-close" onclick="closeCertModal()">&times;</button>
-    <h3 id="certModalTitle" class="cert-modal-title"></h3>
-    <img id="certModalImage" class="cert-modal-image" src="" alt="">
-  </div>
-</div>
-
 </body>
 </html>
-
-
-
